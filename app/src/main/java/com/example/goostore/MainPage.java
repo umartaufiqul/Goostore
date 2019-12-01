@@ -9,6 +9,7 @@ import android.widget.ImageView;
 public class MainPage extends AppCompatActivity {
 
     ImageView profileButton;
+    boolean checkLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +20,14 @@ public class MainPage extends AppCompatActivity {
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainPage.this, Profile.class);
-                startActivity(intent);
+                if(checkLogin){
+                    Intent intent = new Intent(MainPage.this, Profile.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(MainPage.this, Login.class);
+                    startActivity(intent);
+                }
             }
         });
 

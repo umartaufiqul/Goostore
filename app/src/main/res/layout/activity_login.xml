@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:background="@drawable/background_login">
+
+    <ImageView
+        android:id="@+id/menubar"
+        android:layout_width="1080px"
+        android:layout_height="243px"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/menubar" />
+
+    <ImageView
+        android:id="@+id/homebtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menubar"
+        app:layout_constraintEnd_toStartOf="@+id/profilebtn"
+        app:layout_constraintStart_toEndOf="@+id/myauctionbtn"
+        app:srcCompat="@drawable/home" />
+
+    <ImageView
+        android:id="@+id/myauctionbtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/menubar"
+        app:srcCompat="@drawable/myauction" />
+
+    <ImageView
+        android:id="@+id/profilebtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/menubar"
+        app:srcCompat="@drawable/profile" />
+
+    <ImageView
+        android:id="@+id/loginbtn"
+        android:layout_width="471px"
+        android:layout_height="150px"
+        android:layout_marginStart="60px"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/creat_account_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:srcCompat="@drawable/login_button" />
+
+    <ImageView
+        android:id="@+id/creat_account_btn"
+        android:layout_width="471px"
+        android:layout_height="150px"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:srcCompat="@drawable/creat_account_button" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="960px"
+        android:layout_height="138px"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="225dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:fontFamily="@font/mainfont"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/Gray"
+        android:background="@drawable/input_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="960px"
+        android:layout_height="138px"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:fontFamily="@font/mainfont"
+        android:textColorHint="@color/Gray"
+        android:background="@drawable/input_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+</android.support.constraint.ConstraintLayout>
