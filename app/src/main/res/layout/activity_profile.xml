@@ -93,4 +93,98 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilename" />
 
+    <LinearLayout
+        android:layout_width="378dp"
+        android:layout_height="212dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="339dp"
+        android:background="@drawable/yellow_border"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/menubar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="191dp"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/detailuname"
+                android:layout_width="36dp"
+                android:layout_height="31dp"
+                android:fontFamily="@font/mainfont"
+                android:gravity="center|start"
+                android:paddingStart="10dp"
+                android:text="ID:"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profilename" />
+
+            <TextView
+                android:id="@+id/detailpwd"
+                android:layout_width="56dp"
+                android:layout_height="31dp"
+                android:fontFamily="@font/mainfont"
+                android:gravity="center|start"
+                android:paddingStart="10dp"
+                android:text="PWD:"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profilename" />
+
+            <TextView
+                android:id="@+id/detailphnum"
+                android:layout_width="123dp"
+                android:layout_height="31dp"
+                android:fontFamily="@font/mainfont"
+                android:gravity="center|start"
+                android:paddingStart="10dp"
+                android:text="Phone Number:"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profilename" />
+
+            <TextView
+                android:id="@+id/detailbd"
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
+                android:fontFamily="@font/mainfont"
+                android:gravity="center|start"
+                android:paddingStart="10dp"
+                android:text="Birth Date:"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profilename" />
+            <TextView
+                android:id="@+id/detailcert"
+                android:layout_width="100dp"
+                android:layout_height="31dp"
+                android:fontFamily="@font/mainfont"
+                android:gravity="center|start"
+                android:paddingStart="10dp"
+                android:text="Certification:"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profilename" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
