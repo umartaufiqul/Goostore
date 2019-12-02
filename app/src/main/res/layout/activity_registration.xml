@@ -57,8 +57,8 @@
         android:background="@drawable/input_field"
         android:ems="10"
         android:fontFamily="@font/mainfont"
-        android:hint="Email"
-        android:inputType="textPersonName"
+        android:hint="Address"
+        android:inputType="textPostalAddress"
         android:textColorHint="@color/Gray"
         app:layout_constraintBottom_toTopOf="@+id/creat_account_btn1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +98,7 @@
         android:ems="10"
         android:fontFamily="@font/mainfont"
         android:hint="Name"
-        android:inputType="textPostalAddress"
+        android:inputType="textPersonName"
         android:textColorHint="@color/Gray"
         app:layout_constraintBottom_toTopOf="@+id/creat_account_btn1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +120,14 @@
         android:id="@+id/textView2"
         android:layout_width="362dp"
         android:layout_height="34dp"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="661dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text='"Please fill in all fields" in this case'
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/creat_account_btn1" />
 
 </android.support.constraint.ConstraintLayout>
