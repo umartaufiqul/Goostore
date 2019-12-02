@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -23,7 +22,7 @@ public class Login extends AppCompatActivity {
         creat_accountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this, Login.class); //here should be Registration.class*
+                Intent intent = new Intent(Login.this, Registration.class);
                 startActivity(intent);
             }
         });
@@ -38,19 +37,18 @@ public class Login extends AppCompatActivity {
                 String email = input_email.getText().toString();
 
                 EditText input_password = findViewById(R.id.editText3);
-                String password = input_email.getText().toString();
+                String password = input_password.getText().toString();
 
                 User sample_user = new User("", "", "", "", "");
-                boolean checkLogin = sample_user.Login(email, password);
+                boolean LoginOK = sample_user.Login(email, password);
 
-                if(checkLogin){
+                if(LoginOK){ //check if account details are right
+                    //checkLogin = true;
                     Intent intent = new Intent(Login.this, Profile.class);
                     startActivity(intent);
                 }
-                else{
-                    sample_user.Registration(email, password, "Rakhman", "87714607938", "Munji Hall, 434"); //shouldn't be here
-                    Intent intent = new Intent(Login.this, Login.class);
-                    startActivity(intent);
+                else{ //if account details are wrong
+                    System.out.println("Invalid email or password!");
                 }
             }
         });

@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Login"></activity>
+        <activity android:name=".Registration"></activity>
         <activity android:name=".Profile" />
         <activity
             android:name=".MainPage"

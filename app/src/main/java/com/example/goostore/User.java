@@ -41,13 +41,15 @@ public class User {
     }
 
     //Registration Method
-    public void Registration (String email, String password, String name, String phoneNumber, String address) {
+    public boolean Registration (String email, String password, String name, String phoneNumber, String address) {
+        if (email.equals("") || password.equals("") || name.equals("") || phoneNumber.equals("") || address.equals("") ) return false;
         Map<String, String> m = new HashMap<String, String>();
         m.put("Password", password);
         m.put("Name", name);
         m.put("PhoneNumber", phoneNumber);
         m.put("Address", address);
         DataBase.Users.put(email, m);
+        return true;
     }
 
     //Login Method
