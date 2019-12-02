@@ -53,33 +53,17 @@
         app:srcCompat="@drawable/profile" />
 
     <TextView
-        android:id="@+id/UserCountry"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/mainfont"
-        android:text="UserCountry"
-        android:textColor="@color/Yellow"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toEndOf="@+id/Thumbnail"
-        app:layout_constraintTop_toBottomOf="@+id/UserName" />
-
-    <TextView
         android:id="@+id/UserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="196dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/mainfont"
         android:text="UserName"
         android:textColor="@color/Black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toEndOf="@+id/Thumbnail"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -110,8 +94,8 @@
         android:id="@+id/Email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/mainfont"
         android:text="Email:"
         android:textColor="@color/Yellow2"
@@ -123,7 +107,7 @@
         android:id="@+id/PW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="14dp"
         android:fontFamily="@font/mainfont"
         android:text="PW:"
@@ -136,7 +120,7 @@
         android:id="@+id/PhoneNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="14dp"
         android:fontFamily="@font/mainfont"
         android:text="PhoneNumber:"
@@ -149,7 +133,7 @@
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="14dp"
         android:fontFamily="@font/mainfont"
         android:text="Address:"
@@ -159,37 +143,24 @@
         app:layout_constraintTop_toBottomOf="@+id/PhoneNum" />
 
     <TextView
-        android:id="@+id/selfcertification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="14dp"
-        android:fontFamily="@font/mainfont"
-        android:text="Self-certification by:"
-        android:textColor="@color/Yellow2"
-        android:textSize="14dp"
-        app:layout_constraintStart_toStartOf="@+id/infoBox"
-        app:layout_constraintTop_toBottomOf="@+id/userAddress" />
-
-    <TextView
         android:id="@+id/bankAccount"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="14dp"
         android:fontFamily="@font/mainfont"
         android:text="Bank Account:"
         android:textColor="@color/Yellow2"
         android:textSize="14dp"
         app:layout_constraintStart_toStartOf="@+id/infoBox"
-        app:layout_constraintTop_toBottomOf="@+id/userAddress2" />
+        app:layout_constraintTop_toBottomOf="@+id/userAddress" />
 
     <TextView
         android:id="@+id/UserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/mainfont"
         android:text="UserEmail"
         android:textColor="@color/Yellow3"
@@ -233,28 +204,16 @@
         app:layout_constraintTop_toBottomOf="@+id/userPhoneNumber" />
 
     <TextView
-        android:id="@+id/userAddress2"
+        android:id="@+id/userBankAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="14dp"
         android:fontFamily="@font/mainfont"
-        android:text="UserAddress"
-        android:textColor="@color/Yellow3"
-        app:layout_constraintStart_toEndOf="@+id/selfcertification"
-        app:layout_constraintTop_toBottomOf="@+id/userAddress" />
-
-    <TextView
-        android:id="@+id/userAddress3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="14dp"
-        android:fontFamily="@font/mainfont"
-        android:text="UserAddress"
+        android:text="UserBankAccount"
         android:textColor="@color/Yellow3"
         app:layout_constraintStart_toEndOf="@+id/bankAccount"
-        app:layout_constraintTop_toBottomOf="@+id/userAddress2" />
+        app:layout_constraintTop_toBottomOf="@+id/userAddress" />
 
     <ImageView
         android:id="@+id/imageView2"
