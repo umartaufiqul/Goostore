@@ -37,17 +37,20 @@ public class Registration extends AppCompatActivity {
                 EditText input_address = findViewById(R.id.editTextReg5);
                 String address = input_address.getText().toString();
 
-                User sample_user = new User("", "", "", "", "");
-                boolean register_properly = sample_user.Registration(email, password, name, phone_number, address);
+                EditText input_bank_account = findViewById(R.id.editTextReg6);
+                String bank_account = input_bank_account.getText().toString();
 
-                if (register_properly) { //if all fields are non-empty
+                User sample_user = new User("", "", "", "", "", "");
+                boolean register_OK = sample_user.Registration(email, password, name, phone_number, address, bank_account);
+
+                if (register_OK) { //if all fields are non-empty
                     //checkLogin = true;
                     Intent intent = new Intent(Registration.this, Profile.class);
                     startActivity(intent);
                 }
                 else {
                     //System.out.println("Please, fill in all the fields above");
-                    TextView fillAll= findViewById(R.id.textView2);
+                    TextView fillAll= findViewById(R.id.textViewFillAll);
                     fillAll.setText("Please, fill in all the fields above");
                 }
             }

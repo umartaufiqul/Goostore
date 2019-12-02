@@ -9,14 +9,16 @@ public class User {
     private String Password;
     private String PhoneNumber;
     private String Address;
+    private String BankAccount;
 
     //Constructor
-    public User(String email, String password, String name, String phoneNumber, String address) {
+    public User(String email, String password, String name, String phoneNumber, String address, String bankAccount) {
         Name = name;
         Password = password;
         Email = email;
         PhoneNumber = phoneNumber;
         Address = address;
+        BankAccount = bankAccount;
     }
 
     //Method to access the Email
@@ -39,15 +41,20 @@ public class User {
     public String getAddress() {
         return Address;
     }
+    //Method to access the Address
+    public String getBankAccount() {
+        return BankAccount;
+    }
 
     //Registration Method
-    public boolean Registration (String email, String password, String name, String phoneNumber, String address) {
-        if (email.equals("") || password.equals("") || name.equals("") || phoneNumber.equals("") || address.equals("") ) return false;
+    public boolean Registration (String email, String password, String name, String phoneNumber, String address, String bankAccount) {
+        if (email.equals("") || password.equals("") || name.equals("") || phoneNumber.equals("") || address.equals("") || bankAccount.equals("")) return false;
         Map<String, String> m = new HashMap<String, String>();
         m.put("Password", password);
         m.put("Name", name);
         m.put("PhoneNumber", phoneNumber);
         m.put("Address", address);
+        m.put("BankAccount", bankAccount);
         DataBase.Users.put(email, m);
         return true;
     }

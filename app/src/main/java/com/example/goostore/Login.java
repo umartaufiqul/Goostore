@@ -40,7 +40,7 @@ public class Login extends AppCompatActivity {
                 EditText input_password = findViewById(R.id.editText3);
                 String password = input_password.getText().toString();
 
-                User sample_user = new User("", "", "", "", "");
+                User sample_user = new User("", "", "", "", "", "");
                 boolean LoginOK = sample_user.Login(email, password);
 
                 if(LoginOK){ //check if account details are right
@@ -49,8 +49,8 @@ public class Login extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{ //if account details are wrong
-                    TextView wrongPassword= findViewById(R.id.textView3);
-                    wrongPassword.setText("Invalid email or password!");
+                    TextView wrongPassword= findViewById(R.id.textViewWrongPassword);
+                    wrongPassword.setText("Invalid email or password");
                 }
             }
         });
