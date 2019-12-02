@@ -1,6 +1,8 @@
 package com.example.goostore;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +26,5 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }
