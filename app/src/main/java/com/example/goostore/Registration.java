@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Registration extends AppCompatActivity {
     ImageView creat_account1Button;
@@ -45,7 +46,9 @@ public class Registration extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
-                    System.out.println("Please, fill in all the fields above");
+                    //System.out.println("Please, fill in all the fields above");
+                    TextView fillAll= findViewById(R.id.textView2);
+                    fillAll.setText("Please, fill in all the fields above");
                 }
             }
         });

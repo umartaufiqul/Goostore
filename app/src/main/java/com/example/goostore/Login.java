@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Login extends AppCompatActivity {
 
@@ -48,7 +49,8 @@ public class Login extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{ //if account details are wrong
-                    System.out.println("Invalid email or password!");
+                    TextView wrongPassword= findViewById(R.id.textView3);
+                    wrongPassword.setText("Invalid email or password!");
                 }
             }
         });
