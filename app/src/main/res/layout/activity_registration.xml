@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextReg1"
+        android:layout_width="960px"
+        android:layout_height="138px"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="368dp"
+        android:background="@drawable/input_field"
+        android:ems="10"
+        android:fontFamily="@font/mainfont"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/Gray"
+        app:layout_constraintBottom_toTopOf="@+id/creat_account_btn1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <EditText
+        android:id="@+id/editTextReg2"
+        android:layout_width="960px"
+        android:layout_height="138px"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="288dp"
+        android:background="@drawable/input_field"
+        android:ems="10"
+        android:fontFamily="@font/mainfont"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/Gray"
+        app:layout_constraintBottom_toTopOf="@+id/creat_account_btn1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <EditText
+        android:id="@+id/editTextReg3"
+        android:layout_width="960px"
+        android:layout_height="138px"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/input_field"
+        android:ems="10"
+        android:fontFamily="@font/mainfont"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/Gray"
+        app:layout_constraintBottom_toTopOf="@+id/creat_account_btn1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <EditText
+        android:id="@+id/editTextReg4"
+        android:layout_width="960px"
+        android:layout_height="138px"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="128dp"
+        android:background="@drawable/input_field"
+        android:ems="10"
+        android:fontFamily="@font/mainfont"
+        android:hint="Phone Number"
+        android:inputType="text"
+        android:textColorHint="@color/Gray"
+        app:layout_constraintBottom_toTopOf="@+id/creat_account_btn1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <EditText
+        android:id="@+id/editTextReg5"
+        android:layout_width="960px"
+        android:layout_height="138px"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="208dp"
+        android:background="@drawable/input_field"
+        android:ems="10"
+        android:fontFamily="@font/mainfont"
+        android:hint="Name"
+        android:inputType="textPostalAddress"
+        android:textColorHint="@color/Gray"
+        app:layout_constraintBottom_toTopOf="@+id/creat_account_btn1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <ImageView
+        android:id="@+id/creat_account_btn1"
+        android:layout_width="471px"
+        android:layout_height="150px"
+        android:layout_marginTop="592dp"
+        android:layout_marginEnd="116dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/creat_account_button" />
+
+</android.support.constraint.ConstraintLayout>
