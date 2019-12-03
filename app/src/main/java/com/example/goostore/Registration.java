@@ -46,6 +46,7 @@ public class Registration extends AppCompatActivity {
                 if (register_OK) { //if all fields are non-empty
                     //checkLogin = true;
                     Intent intent = new Intent(Registration.this, Profile.class);
+                    intent.putExtra("user", email);
                     startActivity(intent);
                 }
                 else {

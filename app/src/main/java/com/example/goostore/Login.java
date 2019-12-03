@@ -14,7 +14,7 @@ public class Login extends AppCompatActivity {
     ImageView creat_accountButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -46,6 +46,7 @@ public class Login extends AppCompatActivity {
                 if(LoginOK){ //check if account details are right
                     //checkLogin = true;
                     Intent intent = new Intent(Login.this, Profile.class);
+                    intent.putExtra("user", email);
                     startActivity(intent);
                 }
                 else{ //if account details are wrong
