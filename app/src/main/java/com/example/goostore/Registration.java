@@ -1,6 +1,7 @@
 package com.example.goostore;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 public class Registration extends AppCompatActivity {
     ImageView creat_account1Button;
+    SharedPreferences sp;
+    SharedPreferences spUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +25,13 @@ public class Registration extends AppCompatActivity {
         creat_account1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sp = getSharedPreferences("logged", MODE_PRIVATE);
+                spUser = getSharedPreferences("uEmail", MODE_PRIVATE);
 
+                if (sp.getBoolean("logged", false)) {
+                    Intent intent = new Intent(Registration.this, Profile.class);
+                    startActivity(intent);
+                }
                 EditText input_email = findViewById(R.id.editTextReg1);
                 String email = input_email.getText().toString();
 
@@ -48,6 +57,8 @@ public class Registration extends AppCompatActivity {
                     //checkLogin = true;
                     Intent intent = new Intent(Registration.this, Profile.class);
                     intent.putExtra("user", email);
+                    sp.edit().putBoolean("logged", true).apply();
+                    spUser.edit().putString("uEmail", email).apply();
                     startActivity(intent);
                 }
                 else {

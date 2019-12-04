@@ -2,6 +2,7 @@ package com.example.goostore;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,14 +15,21 @@ import org.w3c.dom.Text;
 public class Profile extends AppCompatActivity {
 
     ImageView homeButton;
+    ImageView logoutButton;
+    SharedPreferences spUser;
+    SharedPreferences spLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        spUser = getSharedPreferences("uEmail", MODE_PRIVATE);
+        spLogin = getSharedPreferences("logged", MODE_PRIVATE);
+
         //Get the user data from database
-        String email = getIntent().getStringExtra("user");
+        //String email = getIntent().getStringExtra("user");
+        String email = spUser.getString("uEmail", "NULL");
 
         TextView uEmail = (TextView) findViewById(R.id.UserEmail);
         TextView uName = (TextView) findViewById(R.id.UserName);
@@ -50,6 +58,17 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Profile.this, MainPage.class);
+                startActivity(intent);
+            }
+        });
+
+        //Logout Button
+        logoutButton = findViewById(R.id.logoutBtn);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, MainPage.class);
+                spLogin.edit().putBoolean("logged", false).apply();
                 startActivity(intent);
             }
         });

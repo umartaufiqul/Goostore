@@ -226,7 +226,7 @@
         app:srcCompat="@drawable/modification" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/logoutBtn"
         android:layout_width="471px"
         android:layout_height="150px"
         android:layout_marginStart="8dp"
