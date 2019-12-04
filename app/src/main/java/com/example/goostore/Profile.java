@@ -44,7 +44,7 @@ public class Profile extends AppCompatActivity {
         if (user != null) {
             uEmail.setText(email);
             uName.setText(user.getName());
-            uPwd.setText(user.getEmail());
+            uPwd.setText(user.getPassword());
             uPhone.setText(user.getPhoneNumber());
             uAddress.setText(user.getAddress());
             uBankAcc.setText(user.getBankAccount());

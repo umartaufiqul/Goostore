@@ -52,14 +52,19 @@ public class Registration extends AppCompatActivity {
                 User sample_user = new User("", "", "", "", "", "");
                 boolean register_OK = sample_user.Registration(email, password, name, phone_number, address, bank_account);
 
-                newUser(v);
-                if (register_OK) { //if all fields are non-empty
-                    //checkLogin = true;
+                boolean registOK = newUser(v);
+
+                if (registOK && register_OK) {
+                    //if all fields are non-empty
                     Intent intent = new Intent(Registration.this, Profile.class);
                     intent.putExtra("user", email);
                     sp.edit().putBoolean("logged", true).apply();
                     spUser.edit().putString("uEmail", email).apply();
                     startActivity(intent);
+                }
+                else if (registOK == false) {
+                    TextView fillAll= findViewById(R.id.textViewFillAll);
+                    fillAll.setText("User with this email already exist");
                 }
                 else {
                     //System.out.println("Please, fill in all the fields above");
@@ -70,7 +75,7 @@ public class Registration extends AppCompatActivity {
         });
     }
 
-    public void newUser(View view) {
+    public boolean newUser(View view) {
         DBHandler dbHandler = new DBHandler(getApplicationContext(), null, null, 1);
         EditText input_email = findViewById(R.id.editTextReg1);
         String email = input_email.getText().toString();
@@ -90,7 +95,8 @@ public class Registration extends AppCompatActivity {
         String bank_account = input_bank_account.getText().toString();
 
         User sample_user = new User(email, password, name, phone_number, address, bank_account);
-        dbHandler.addUser(sample_user);
+        boolean regist = dbHandler.addUser(sample_user);
+        return regist;
     }
 
 }
