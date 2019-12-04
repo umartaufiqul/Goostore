@@ -24,23 +24,25 @@ public class Profile extends AppCompatActivity {
         String email = getIntent().getStringExtra("user");
 
         TextView uEmail = (TextView) findViewById(R.id.UserEmail);
-        uEmail.setText(email);
-
         TextView uName = (TextView) findViewById(R.id.UserName);
-        uName.setText(DataBase.Users.get(email).get("Name"));
-
         TextView uPwd = (TextView) findViewById(R.id.userPassword);
-        uPwd.setText(DataBase.Users.get(email).get("Password"));
-
         TextView uPhone = (TextView) findViewById(R.id.userPhoneNumber);
-        uPhone.setText(DataBase.Users.get(email).get("PhoneNumber"));
-
         TextView uAddress = (TextView) findViewById(R.id.userAddress);
-        uAddress.setText(DataBase.Users.get(email).get("Address"));
-
         TextView uBankAcc = (TextView) findViewById(R.id.userBankAccount);
-        uBankAcc.setText(DataBase.Users.get(email).get("BankAccount"));
 
+        DBHandler dbHandler = new DBHandler(getApplicationContext(), null, null, 1);
+        User user = dbHandler.findUser(email);
+
+        if (user != null) {
+            uEmail.setText(email);
+            uName.setText(user.getName());
+            uPwd.setText(user.getEmail());
+            uPhone.setText(user.getPhoneNumber());
+            uAddress.setText(user.getAddress());
+            uBankAcc.setText(user.getBankAccount());
+        } else {
+            uName.setText("No Match Found");
+        }
 
         //Home Button
         homeButton = findViewById(R.id.homebtn);

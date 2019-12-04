@@ -46,6 +46,30 @@ public class User {
         return BankAccount;
     }
 
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        PhoneNumber = phoneNumber;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        BankAccount = bankAccount;
+    }
+
     //Registration Method
     public boolean Registration (String email, String password, String name, String phoneNumber, String address, String bankAccount) {
         if (email.equals("") || password.equals("") || name.equals("") || phoneNumber.equals("") || address.equals("") || bankAccount.equals("")) return false;
