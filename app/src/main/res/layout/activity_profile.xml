@@ -56,25 +56,25 @@
         android:id="@+id/UserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="196dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="25dp"
         android:fontFamily="@font/mainfont"
         android:text="UserName"
         android:textColor="@color/Black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Thumbnail"
         app:layout_constraintStart_toEndOf="@+id/Thumbnail"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/Thumbnail" />
 
     <ImageView
         android:id="@+id/Thumbnail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
         app:srcCompat="@drawable/thumbnail" />
 
     <ImageView
@@ -82,12 +82,14 @@
         android:layout_width="960px"
         android:layout_height="230dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="316dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65"
         app:srcCompat="@drawable/infobox" />
 
     <TextView

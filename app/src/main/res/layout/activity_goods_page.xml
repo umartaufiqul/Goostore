@@ -4,6 +4,376 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GoodsPage">
+    tools:context=".GoodsPage"
+    android:background="@drawable/background_goods">
+
+    <TextView
+        android:id="@+id/deadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mainfont"
+        android:text="Deadline"
+        android:textColor="@color/Yellow"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/GoodName"
+        app:layout_constraintTop_toBottomOf="@+id/current_price" />
+
+    <ImageView
+        android:id="@+id/menubar"
+        android:layout_width="1080px"
+        android:layout_height="243px"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/menubar" />
+
+    <ImageView
+        android:id="@+id/homebtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menubar"
+        app:layout_constraintEnd_toStartOf="@+id/profilebtn"
+        app:layout_constraintStart_toEndOf="@+id/myauctionbtn"
+        app:srcCompat="@drawable/home" />
+
+    <ImageView
+        android:id="@+id/myauctionbtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/menubar"
+        app:srcCompat="@drawable/myauction" />
+
+    <ImageView
+        android:id="@+id/profilebtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/menubar"
+        app:srcCompat="@drawable/profile" />
+
+    <ImageView
+        android:id="@+id/seller_bar"
+        android:layout_width="1080px"
+        android:layout_height="222px"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/bid_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/seller_background" />
+
+    <ImageView
+        android:id="@+id/bid_bar"
+        android:layout_width="1038px"
+        android:layout_height="150px"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/menubar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bid_background" />
+
+    <ImageView
+        android:id="@+id/bid_button"
+        android:layout_width="510px"
+        android:layout_height="150px"
+        app:layout_constraintEnd_toEndOf="@+id/bid_bar"
+        app:layout_constraintTop_toTopOf="@+id/bid_bar"
+        app:srcCompat="@drawable/bid_button" />
+
+    <ImageView
+        android:id="@+id/seller_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seller_bar"
+        app:layout_constraintStart_toStartOf="@+id/seller_bar"
+        app:layout_constraintTop_toTopOf="@+id/seller_bar"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/thumbnail" />
+
+    <TextView
+        android:id="@+id/seller_name"
+        android:layout_width="107dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="25dp"
+        android:text="seller_name"
+        android:fontFamily="@font/mainfont"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seller_bar"
+        app:layout_constraintStart_toEndOf="@+id/seller_image"
+        app:layout_constraintTop_toTopOf="@+id/seller_bar"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/textView3"
+        android:layout_width="87dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="24dp"
+        android:background="@null"
+        android:fontFamily="@font/mainfont"
+        android:gravity="right"
+        android:hint="Email Address"
+        android:text="30000"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bid_bar"
+        app:layout_constraintStart_toStartOf="@+id/bid_bar"
+        app:layout_constraintTop_toTopOf="@+id/bid_bar"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <TextView
+        android:id="@+id/won"
+        android:layout_width="37dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/mainfont"
+        android:text="won"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bid_bar"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/bid_bar"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="1080px"
+        android:layout_height="711px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/good_main_picture" />
+
+    <TextView
+        android:id="@+id/GoodName"
+        android:layout_width="960px"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/mainfont"
+        android:text="GoodName"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PageNum" />
+
+    <TextView
+        android:id="@+id/current_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/mainfont"
+        android:text="Current price"
+        android:textColor="@color/Yellow"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/GoodName"
+        app:layout_constraintTop_toBottomOf="@+id/GoodName" />
+
+    <TextView
+        android:id="@+id/price_won"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/mainfont"
+        android:text="won"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/price2"
+        app:layout_constraintTop_toBottomOf="@+id/GoodName" />
+
+    <TextView
+        android:id="@+id/price2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/mainfont"
+        android:text="30000"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/current_price"
+        app:layout_constraintTop_toBottomOf="@+id/GoodName" />
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mainfont"
+        android:text="Category"
+        android:textColor="@color/Yellow"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/GoodName"
+        app:layout_constraintTop_toBottomOf="@+id/deadline" />
+
+    <TextView
+        android:id="@+id/DeadlineSlash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mainfont"
+        android:text="/"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/deadlineMonth"
+        app:layout_constraintTop_toBottomOf="@+id/price_won" />
+
+    <TextView
+        android:id="@+id/deadlineDubledot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mainfont"
+        android:text=":"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/deadlinehour"
+        app:layout_constraintTop_toBottomOf="@+id/price_won" />
+
+    <TextView
+        android:id="@+id/deadlineMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mainfont"
+        android:text="12"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/price2"
+        app:layout_constraintTop_toBottomOf="@+id/price_won" />
+
+    <TextView
+        android:id="@+id/deadlinedate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mainfont"
+        android:text="20"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/DeadlineSlash"
+        app:layout_constraintTop_toBottomOf="@+id/price_won" />
+
+    <TextView
+        android:id="@+id/deadlinehour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mainfont"
+        android:text="23"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/deadlinedate"
+        app:layout_constraintTop_toBottomOf="@+id/price_won" />
+
+    <TextView
+        android:id="@+id/deadlineminute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mainfont"
+        android:text="59"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/deadlineDubledot"
+        app:layout_constraintTop_toBottomOf="@+id/price_won" />
+
+    <TextView
+        android:id="@+id/good_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mainfont"
+        android:text="Book"
+        android:textColor="@color/Black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/deadlineMonth"
+        app:layout_constraintTop_toBottomOf="@+id/DeadlineSlash" />
+
+    <TextView
+        android:id="@+id/PageNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/mainfont"
+        android:text="1"
+        android:textColor="@color/Gray"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/slash"
+        app:layout_constraintTop_toTopOf="@+id/slash" />
+
+    <TextView
+        android:id="@+id/slash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/mainfont"
+        android:text="/"
+        android:textColor="@color/Gray"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/totalPageNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/mainfont"
+        android:text="3"
+        android:textColor="@color/Gray"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/slash"
+        app:layout_constraintTop_toTopOf="@+id/slash" />
+
+    <TextView
+        android:id="@+id/rightbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/mainfont"
+        android:text=">"
+        android:textColor="@color/Gray"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/totalPageNum"
+        app:layout_constraintTop_toTopOf="@+id/PageNum" />
+
+    <TextView
+        android:id="@+id/leftbutton"
+        android:layout_width="9dp"
+        android:layout_height="29dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/mainfont"
+        android:text="<"
+        android:textColor="@color/Gray"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/PageNum"
+        app:layout_constraintTop_toTopOf="@+id/PageNum" />
 
 </android.support.constraint.ConstraintLayout>
