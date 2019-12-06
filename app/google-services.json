@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "528109728239",
+    "firebase_url": "https://goostore.firebaseio.com",
+    "project_id": "goostore",
+    "storage_bucket": "goostore.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528109728239:android:03720c1be97c504341c61a",
+        "android_client_info": {
+          "package_name": "com.example.goostore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528109728239-guv3gorg37t0tsssfil7nv3jmnc84p63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8uvLIGhgUrl4dYmaeTMCjy_xpM2_fSOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528109728239-guv3gorg37t0tsssfil7nv3jmnc84p63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

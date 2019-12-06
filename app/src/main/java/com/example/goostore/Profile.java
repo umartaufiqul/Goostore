@@ -1,16 +1,22 @@
 package com.example.goostore;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.*;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Profile extends AppCompatActivity {
 
@@ -18,6 +24,10 @@ public class Profile extends AppCompatActivity {
     ImageView logoutButton;
     SharedPreferences spUser;
     SharedPreferences spLogin;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    private DatabaseReference mDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,30 +37,45 @@ public class Profile extends AppCompatActivity {
         spUser = getSharedPreferences("uEmail", MODE_PRIVATE);
         spLogin = getSharedPreferences("logged", MODE_PRIVATE);
 
+
+        //Google way
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        mDB = FirebaseDatabase.getInstance().getReference();
+
         //Get the user data from database
         //String email = getIntent().getStringExtra("user");
         String email = spUser.getString("uEmail", "NULL");
 
-        TextView uEmail = (TextView) findViewById(R.id.UserEmail);
-        TextView uName = (TextView) findViewById(R.id.UserName);
-        TextView uPwd = (TextView) findViewById(R.id.userPassword);
-        TextView uPhone = (TextView) findViewById(R.id.userPhoneNumber);
-        TextView uAddress = (TextView) findViewById(R.id.userAddress);
-        TextView uBankAcc = (TextView) findViewById(R.id.userBankAccount);
+        TextView uEmail = findViewById(R.id.UserEmail);
+        TextView uName = findViewById(R.id.UserName);
+        TextView uPwd = findViewById(R.id.userPassword);
+        TextView uPhone = findViewById(R.id.userPhoneNumber);
+        TextView uAddress = findViewById(R.id.userAddress);
+        TextView uBankAcc = findViewById(R.id.userBankAccount);
 
-        DBHandler dbHandler = new DBHandler(getApplicationContext(), null, null, 1);
-        User user = dbHandler.findUser(email);
+        /*DBHandler dbHandler = new DBHandler(getApplicationContext(), null, null, 1);
+        User user = dbHandler.findUser(email);*/
 
-        if (user != null) {
-            uEmail.setText(email);
-            uName.setText(user.getName());
-            uPwd.setText(user.getPassword());
-            uPhone.setText(user.getPhoneNumber());
-            uAddress.setText(user.getAddress());
-            uBankAcc.setText(user.getBankAccount());
-        } else {
-            uName.setText("No Match Found");
-        }
+        uEmail.setText(firebaseUser.getEmail());
+        mDB.child("users").orderByChild("email").equalTo(firebaseUser.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                    User mUser = childSnapshot.getValue(User.class);
+                    uName.setText(mUser.getName());
+                    uPwd.setText(mUser.getPassword());
+                    uPhone.setText(mUser.getPhoneNumber());
+                    uAddress.setText(mUser.getAddress());
+                    uBankAcc.setText(mUser.getBankAccount());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         //Home Button
         homeButton = findViewById(R.id.homebtn);
@@ -68,7 +93,8 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Profile.this, MainPage.class);
-                spLogin.edit().putBoolean("logged", false).apply();
+                FirebaseAuth.getInstance().signOut();
+                //spLogin.edit().putBoolean("logged", false).apply();
                 startActivity(intent);
             }
         });

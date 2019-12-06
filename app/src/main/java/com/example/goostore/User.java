@@ -21,6 +21,8 @@ public class User {
         BankAccount = bankAccount;
     }
 
+    public User() {}
+
     //Method to access the Email
     public String getEmail() {
         return Email;
