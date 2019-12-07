@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.goostore">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GoodsPage"></activity>
+        <activity android:name=".myAuctionPage"></activity>
+        <activity android:name=".categoryPage" />
+        <activity android:name=".GoodsPage" />
         <activity android:name=".Login" />
         <activity android:name=".Registration" />
         <activity android:name=".Profile" />
@@ -24,6 +28,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
