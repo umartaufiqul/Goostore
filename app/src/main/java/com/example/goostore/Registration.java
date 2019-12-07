@@ -76,7 +76,7 @@ public class Registration extends AppCompatActivity {
                 else {
                     //System.out.println("Please, fill in all the fields above");
                     TextView fillAll= findViewById(R.id.textViewFillAll);
-                    fillAll.setText("Please, fill in all the fields above");
+                    fillAll.setText("Please, fill in all the fields above correctly");
                 }
             }
         });
@@ -109,6 +109,14 @@ public class Registration extends AppCompatActivity {
         else {
             regist = true;
         }
+        try {
+            Integer.parseInt(phone_number);
+            Integer.parseInt(bank_account);
+        } catch (NumberFormatException nfe) {
+            regist= false;
+            Toast.makeText(Registration.this, "Incorrect format for Phone Number or Bank Account (all number)", Toast.LENGTH_LONG).show();
+        }
+
 
         //Trying google way
         mDB = FirebaseDatabase.getInstance().getReference().child("users");
