@@ -69,6 +69,10 @@ public class Login extends AppCompatActivity {
                             Intent intent = new Intent(Login.this, Profile.class);
                             startActivity(intent);
                         }
+                        else {
+                            TextView wrongPassword = findViewById(R.id.textViewWrongPassword);
+                            wrongPassword.setText("Invalid email or password!");
+                        }
                     }
                 });
             }
