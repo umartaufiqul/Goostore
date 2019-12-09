@@ -10,6 +10,7 @@ public class User {
     private String PhoneNumber;
     private String Address;
     private String BankAccount;
+    private String ProfilePic;
 
     //Constructor
     public User(String email, String password, String name, String phoneNumber, String address, String bankAccount) {
@@ -19,8 +20,10 @@ public class User {
         PhoneNumber = phoneNumber;
         Address = address;
         BankAccount = bankAccount;
+        ProfilePic = "";
     }
 
+    //DO NOT DELETE THIS
     public User() {}
 
     //Method to access the Email
@@ -48,6 +51,8 @@ public class User {
         return BankAccount;
     }
 
+    public String getProfilePic() { return ProfilePic; }
+
     public void setEmail(String email) {
         Email = email;
     }
@@ -72,6 +77,8 @@ public class User {
         BankAccount = bankAccount;
     }
 
+    public void setProfilePic(String profilePic) { ProfilePic = profilePic; }
+
     //Registration Method
     public boolean Registration (String email, String password, String name, String phoneNumber, String address, String bankAccount) {
         if (email.equals("") || password.equals("") || name.equals("") || phoneNumber.equals("") || address.equals("") || bankAccount.equals("")) return false;
@@ -81,13 +88,7 @@ public class User {
         m.put("PhoneNumber", phoneNumber);
         m.put("Address", address);
         m.put("BankAccount", bankAccount);
-        DataBase.Users.put(email, m);
         return true;
     }
 
-    //Login Method
-    public boolean Login(String email, String password) {
-        if (!DataBase.Users.containsKey(email)) return false;
-        return password.equals(DataBase.Users.get(email).get("Password"));
-    }
 }

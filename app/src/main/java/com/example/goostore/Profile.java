@@ -5,11 +5,18 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +24,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URL;
 
 public class Profile extends AppCompatActivity {
 
@@ -54,8 +67,7 @@ public class Profile extends AppCompatActivity {
         TextView uAddress = findViewById(R.id.userAddress);
         TextView uBankAcc = findViewById(R.id.userBankAccount);
 
-        /*DBHandler dbHandler = new DBHandler(getApplicationContext(), null, null, 1);
-        User user = dbHandler.findUser(email);*/
+        StorageReference sRef = FirebaseStorage.getInstance().getReference();
 
         uEmail.setText(firebaseUser.getEmail());
         mDB.child("users").orderByChild("email").equalTo(firebaseUser.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -68,6 +80,17 @@ public class Profile extends AppCompatActivity {
                     uPhone.setText(mUser.getPhoneNumber());
                     uAddress.setText(mUser.getAddress());
                     uBankAcc.setText(mUser.getBankAccount());
+
+                    StorageReference profPicLoc = sRef.child(mUser.getProfilePic());
+                    profPicLoc.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            new DownloadImageTask((ImageView) findViewById(R.id.Thumbnail)).execute(uri.toString());
+                            ImageView thumbnail = findViewById(R.id.Thumbnail);
+                            //thumbnail.content
+                        }
+                    });
+                    //Glide.with
                 }
             }
 
@@ -100,4 +123,31 @@ public class Profile extends AppCompatActivity {
         });
 
     }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(Bitmap.createScaledBitmap(result, 200, 200, false));
+        }
+    }
+
+
 }
