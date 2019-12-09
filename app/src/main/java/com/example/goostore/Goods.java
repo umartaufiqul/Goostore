@@ -2,12 +2,134 @@ package com.example.goostore;
 
 import android.media.Image;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.*;
+import java.util.concurrent.Callable;
 
 public class Goods{
 
+    private String mName;
+    private String mImageUrl;
+    private String mKey;
+    private String BasePrice;
+    private String Category;
+    private String SellerEmail;
+    private String BuyerEmail;
+    private String DeadLineYear;
+    private String DeadLineMon;
+    private String DeadLineDay;
 
-    private Integer CategoryNumber;
+    public Goods(){
+
+    }
+
+    public Goods(String name, String imageUrl,String basePrice, String category, String selleremail, String deadLineYear, String deadLineMon, String deadLineDay) {
+        if (name.trim().equals("")) {
+            name = "No name";
+        }
+        if (Double.parseDouble(basePrice) < 1.0) {
+            Double price = 1.0;
+            basePrice = price.toString();
+        }
+
+        mName = name;
+        mImageUrl = imageUrl;
+        BasePrice = basePrice;
+        Category = category;
+        SellerEmail = selleremail;
+        DeadLineDay = deadLineDay;
+        DeadLineMon = deadLineMon;
+        DeadLineYear = deadLineYear;
+        BuyerEmail = "";
+    }
+
+    public String getName(){
+        return mName;
+    }
+
+    public void setName(String name){
+        mName = name;
+    }
+
+    public String getImageUrl(){
+        return mImageUrl;
+    }
+
+    public void setImageUrl(String imageUrl){
+        mImageUrl = imageUrl;
+    }
+
+    public String getBasePrice(){
+        return BasePrice;
+    }
+
+    public void setBasePrice(Integer basePrice){
+        if(basePrice < 1){
+            basePrice = 1;
+        }
+        BasePrice = basePrice.toString();
+    }
+
+    public String getCategory(){
+        return Category;
+    }
+
+    public void setCategory(String category){
+        Category = category;
+    }
+
+    public String getSellerEmail(){
+        return SellerEmail;
+    }
+
+    public void setSellerEmail(String email){
+        SellerEmail = email;
+    }
+
+    public String getDeadLineYear(){
+        return DeadLineYear;
+    }
+
+    public void setDeadLineYear(String deadlineYear){
+        DeadLineYear = deadlineYear;
+    }
+
+    public String getDeadLineMon(){
+        return DeadLineMon;
+    }
+
+    public void setDeadLineMon(String deadLineMon){
+        DeadLineMon = deadLineMon;
+    }
+
+    public String getDeadLineDay(){
+        return DeadLineDay;
+    }
+
+    public void setDeadLineDay(String deadLineDay){
+        DeadLineDay = deadLineDay;
+    }
+
+    public String getBuyerEmial(){
+        return BuyerEmail;
+    }
+
+    public void setBuyerEmail(String email){
+        BuyerEmail = email;
+    }
+
+    @Exclude
+    public String getKey(){
+        return mKey;
+    }
+
+    @Exclude
+    public void setKey(String key){
+        mKey = key;
+    }
+
+   /* private Integer CategoryNumber;
     private double BasePrice;
     private String GoodName;
     private Image[] GoodImages;
@@ -38,7 +160,7 @@ public class Goods{
 
     public void setBasePrice(double basePrice) {
         BasePrice = basePrice;
-    }
+    }*/
 
     /* public Goods(String email, String password, String name, String phoneNumber, String address, String bankAccount) {
         super(email, password, name, phoneNumber, address, bankAccount);
