@@ -1,75 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".Goods_Add_Delete_Page">
+    tools:context=".Goods_Add_Delete_Page"
+    android:background="@drawable/background_create_auction">
 
-    <Button
-        android:id="@+id/button_choose_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Choose Image"/>
+    <ImageView
+        android:id="@+id/menubar"
+        android:layout_width="1080px"
+        android:layout_height="243px"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/menubar" />
 
-    <EditText
-        android:id="@+id/edit_text_goods_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button_choose_image"
-        android:hint="Enter Goods Name"
-        android:layout_marginTop="20dp"/>
+    <ImageView
+        android:id="@+id/homebtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menubar"
+        app:layout_constraintEnd_toStartOf="@+id/profilebtn"
+        app:layout_constraintStart_toEndOf="@+id/myauctionbtn"
+        app:srcCompat="@drawable/home" />
 
-    <EditText
-        android:id="@+id/edit_text_user_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_text_goods_name"
-        android:layout_marginTop="16dp"
-        android:hint="Your Email"/>
+    <ImageView
+        android:id="@+id/myauctionbtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/menubar"
+        app:srcCompat="@drawable/myauction" />
 
-    <EditText
-        android:id="@+id/edit_text_base_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_text_user_email"
-        android:layout_marginTop="16dp"
-        android:hint="Base Price(Won)"/>
+    <ImageView
+        android:id="@+id/profilebtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/menubar"
+        app:srcCompat="@drawable/profile" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="1038px"
+        android:layout_height="417dp"
+        app:layout_constraintBottom_toTopOf="@+id/menubar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_category"
+        app:layout_constraintVertical_bias="0.536">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edit_text_goods_name"
+                android:layout_width="1038px"
+                android:layout_height="138px"
+                android:layout_below="@id/button_choose_image"
+                android:background="@drawable/good_name"
+                android:hint="Enter Goods Name"
+                android:fontFamily="@font/mainfont"
+                android:textColor="@color/Black"
+                android:textSize="14dp"
+                android:paddingLeft="15dp"/>
+
+            <EditText
+                android:id="@+id/edit_text_user_email"
+                android:layout_width="1038px"
+                android:layout_height="138px"
+                android:layout_below="@+id/edit_text_goods_name"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/good_name"
+                android:fontFamily="@font/mainfont"
+                android:hint="Your Email"
+                android:paddingLeft="15dp"
+                android:textColor="@color/Black"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/edit_text_base_price"
+                android:layout_width="1038px"
+                android:layout_height="138px"
+                android:layout_below="@id/edit_text_user_email"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/good_name"
+                android:fontFamily="@font/mainfont"
+                android:hint="Base Price(Won)"
+                android:paddingLeft="15dp"
+                android:textColor="@color/Black"
+                android:textSize="14dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/deadline_bar"
+                    android:layout_width="1038px"
+                    android:layout_height="138px"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/insert_image" />
+
+                <TextView
+                    android:id="@+id/deadline_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/mainfont"
+                    android:text="deadline"
+                    android:textColor="@color/Black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/deadline_bar"
+                    app:layout_constraintTop_toTopOf="@+id/deadline_bar" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/Image_bar"
+                    android:layout_width="1038px"
+                    android:layout_height="138px"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/insert_image" />
+
+                <ImageView
+                    android:id="@+id/button_choose_image"
+                    android:layout_width="150px"
+                    android:layout_height="138px"
+                    android:text="Choose Image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/Image_bar"
+                    app:layout_constraintTop_toTopOf="@+id/Image_bar"
+                    app:srcCompat="@drawable/insert_image_button" />
+
+                <TextView
+                    android:id="@+id/insert_image_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/mainfont"
+                    android:text="Insert Image"
+                    android:textColor="@color/Black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/Image_bar"
+                    app:layout_constraintStart_toStartOf="@+id/Image_bar"
+                    app:layout_constraintTop_toTopOf="@+id/Image_bar" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/progress_bar"
+                android:layout_below="@id/edit_text_category"
+                android:layout_marginTop="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <EditText
         android:id="@+id/edit_text_category"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/progress_bar"
+        android:layout_marginStart="14dp"
+        android:background="@null"
+        android:fontFamily="@font/mainfont"
+        android:textColor="@color/Black"
         android:hint="Enter Category"
-        android:layout_below="@id/edit_text_base_price"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintBottom_toBottomOf="@+id/category_image"
+        app:layout_constraintStart_toEndOf="@+id/category_image"
+        app:layout_constraintTop_toTopOf="@+id/category_image"
+        app:layout_constraintVertical_bias="0.5" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_above="@+id/button_upload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
 
     <ImageView
-        android:id="@+id/image_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/progress_bar"
-        android:layout_below="@id/edit_text_category"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <Button
         android:id="@+id/button_upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:text="Upload"/>
+        android:layout_marginBottom="12dp"
+        android:text="Upload"
+        app:layout_constraintBottom_toTopOf="@+id/menubar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/creat_auction_button" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_upload" />
 
     <TextView
         android:id="@+id/text_view_show_uploads"
@@ -82,5 +240,17 @@
         android:text="Show My Goods"
         android:textSize="16sp" />
 
+    <ImageView
+        android:id="@+id/category_image"
+        android:layout_width="90dp"
+        android:layout_height="83dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menubar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar"
+        app:layout_constraintVertical_bias="0.071"
+        app:srcCompat="@drawable/book" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

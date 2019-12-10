@@ -8,16 +8,15 @@
     android:background="@drawable/background_login">
 
     <ScrollView
-        android:layout_width="343dp"
-        android:layout_height="479dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="210dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="42dp"
+        android:id="@+id/scrollView3"
+        android:layout_width="wrap_content"
+        android:layout_height="411dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -29,9 +28,9 @@
                 android:layout_width="329dp"
                 android:layout_height="53dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="0dp"
                 android:background="@drawable/input_field"
                 android:ems="10"
                 android:fontFamily="@font/mainfont"
@@ -49,9 +48,9 @@
                 android:layout_width="329dp"
                 android:layout_height="53dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="0dp"
                 android:background="@drawable/input_field"
                 android:ems="10"
                 android:fontFamily="@font/mainfont"
@@ -67,12 +66,12 @@
 
             <EditText
                 android:id="@+id/editTextReg3"
-                android:layout_width="329dp"
-                android:layout_height="53dp"
+                android:layout_width="334dp"
+                android:layout_height="47dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="0dp"
                 android:background="@drawable/input_field"
                 android:ems="10"
                 android:fontFamily="@font/mainfont"
@@ -90,9 +89,9 @@
                 android:layout_width="329dp"
                 android:layout_height="53dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="0dp"
                 android:background="@drawable/input_field"
                 android:ems="10"
                 android:fontFamily="@font/mainfont"
@@ -110,9 +109,9 @@
                 android:layout_width="329dp"
                 android:layout_height="53dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="0dp"
                 android:background="@drawable/input_field"
                 android:ems="10"
                 android:fontFamily="@font/mainfont"
@@ -130,9 +129,9 @@
                 android:layout_width="329dp"
                 android:layout_height="53dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="0dp"
                 android:background="@drawable/input_field"
                 android:ems="10"
                 android:fontFamily="@font/mainfont"
@@ -165,42 +164,42 @@
                     android:id="@+id/textView"
                     android:layout_width="83dp"
                     android:layout_height="28dp"
+                    android:layout_marginStart="10dp"
                     android:fontFamily="@font/mainfont"
                     android:textAlignment="center"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:layout_marginStart="10dp"/>
+                    android:textColor="@android:color/holo_red_dark" />
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/creat_account_btn1"
-                android:layout_width="171dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:onClick="newUser"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/creat_account_button" />
-
-            <TextView
-                android:id="@+id/textViewFillAll"
-                android:layout_width="322dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:fontFamily="@font/mainfont"
-                android:textAlignment="center"
-                android:textColor="@android:color/holo_red_dark"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.545"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/creat_account_btn1"
-                app:layout_constraintVertical_bias="0.137" />
-
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textViewFillAll"
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:fontFamily="@font/mainfont"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/creat_account_btn1"
+        app:layout_constraintVertical_bias="0.137" />
+
+    <ImageView
+        android:id="@+id/creat_account_btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:onClick="newUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.862"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3"
+        app:srcCompat="@drawable/creat_account_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -162,7 +162,6 @@
                     android:textSize="22sp" />
 
                 <TextView
-                    android:id="@+id/see_more"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
