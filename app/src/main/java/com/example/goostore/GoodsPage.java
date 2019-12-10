@@ -75,10 +75,11 @@ public class GoodsPage extends AppCompatActivity {
         mTextViewDeadLine = findViewById(R.id.text_view_deadline);
         mTextViewGoodsCategory = findViewById(R.id.good_category);
         mTextViewSellerName = findViewById(R.id.seller_name);
+        mEditTextBidPrice = findViewById(R.id.textBidPrice);
 
 
-        mStorageRef = FirebaseStorage.getInstance().getReference("Goods");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("goostore").child("Goods");
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Goods");
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -122,6 +123,7 @@ public class GoodsPage extends AppCompatActivity {
     }
 
     private void getGoodsDetails(String goodsNumber) {
+        Toast.makeText(GoodsPage.this, goodsNumber, Toast.LENGTH_LONG).show();
         mDatabaseRef.child(goodsNumber).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

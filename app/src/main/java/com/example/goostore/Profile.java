@@ -81,7 +81,7 @@ public class Profile extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             new DownloadImageTask((ImageView) findViewById(R.id.Thumbnail)).execute(uri.toString());
-                            ImageView thumbnail = findViewById(R.id.Thumbnail);
+                            //ImageView thumbnail = findViewById(R.id.Thumbnail);
                             //thumbnail.content
                         }
                     });

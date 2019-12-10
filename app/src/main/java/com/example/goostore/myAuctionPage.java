@@ -5,30 +5,60 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
-public class myAuctionPage extends AppCompatActivity {
+public class myAuctionPage extends AppCompatActivity implements GoodsAdapter.OnItemClickListener {
 
     ArrayList<Goods> mGoods;
-    private FirebaseStorage mStorage;
     private DatabaseReference mDatabaseRef;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
     private ValueEventListener mDBListener;
+    private FirebaseStorage mStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_auction_page);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        StorageReference sRef = FirebaseStorage.getInstance().getReference();
+        TextView uEmail = findViewById(R.id.UserName);
+        uEmail.setText(firebaseUser.getEmail());
+
+        StorageReference profPicLoc = sRef.child(firebaseUser.getUid()+"/profile.jpg");
+        profPicLoc.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                new DownloadImageTask((ImageView) findViewById(R.id.Thumbnail)).execute(uri.toString());
+                //ImageView thumbnail = findViewById(R.id.Thumbnail);
+            }
+        });
 
         RecyclerView recyclerView = findViewById(R.id.recycleUser);
 
@@ -51,8 +81,9 @@ public class myAuctionPage extends AppCompatActivity {
                     goods.setKey(postSnapshot.getKey());
                     mGoods.add(goods);
                 }
-
                 adapter.notifyDataSetChanged();
+                TextView sellLoad = findViewById(R.id.selling_loading);
+                sellLoad.setText("");
             }
 
             @Override
@@ -60,5 +91,42 @@ public class myAuctionPage extends AppCompatActivity {
                 Toast.makeText(myAuctionPage.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        private DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(Bitmap.createScaledBitmap(result, 200, 200, false));
+        }
+    }
+
+    @Override
+    public void onItemClick(int position){
+        Goods selectedGoods = mGoods.get(position);
+        final String selectedKey = selectedGoods.getKey();
+
+        //StorageReference imageRef = mStorage.getReferenceFromUrl(selectedGoods.getImageUrl());
+        Intent intent = new Intent(myAuctionPage.this, GoodsPage.class);
+        intent.putExtra("GoodsNumber", selectedKey);
+        //Toast.makeText(myAuctionPage.this, selectedKey, Toast.LENGTH_LONG).show();
+        startActivity(intent);
     }
 }
