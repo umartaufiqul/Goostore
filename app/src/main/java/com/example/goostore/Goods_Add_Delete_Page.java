@@ -88,7 +88,7 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
         firebaseUser = firebaseAuth.getCurrentUser();
 
         mStorageRef = FirebaseStorage.getInstance().getReference("Goods");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Goods");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Gooods");
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -191,7 +191,7 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
     private void uploadFile(Integer result){
         if(mImageUri != null){
             //给图片起名字
-            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
+            StorageReference fileReference = mStorageRef.child(firebaseUser.getUid() + "/" + System.currentTimeMillis() + "/" + "image1." + getFileExtension(mImageUri));
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
             Calendar rightNow = Calendar.getInstance();

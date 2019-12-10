@@ -51,7 +51,8 @@ public class MainPage extends AppCompatActivity{
         SeeMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainPage.this, Goods_item.class);
+                Intent intent = new Intent(MainPage.this, categoryPage.class);
+                startActivity(intent);
             }
         });
 
