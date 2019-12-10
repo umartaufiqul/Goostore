@@ -8,51 +8,6 @@
     android:background="@drawable/background_payment">
 
     <ImageView
-        android:id="@+id/menubar"
-        android:layout_width="1080px"
-        android:layout_height="243px"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/menubar" />
-
-    <ImageView
-        android:id="@+id/homebtn"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/menubar"
-        app:layout_constraintEnd_toStartOf="@+id/profilebtn"
-        app:layout_constraintStart_toEndOf="@+id/myauctionbtn"
-        app:srcCompat="@drawable/home" />
-
-    <ImageView
-        android:id="@+id/myauctionbtn"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/menubar"
-        app:srcCompat="@drawable/myauction" />
-
-    <ImageView
-        android:id="@+id/profilebtn"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/menubar"
-        app:srcCompat="@drawable/profile" />
-
-    <ImageView
         android:id="@+id/step1_box"
         android:layout_width="1020px"
         android:layout_height="330px"
@@ -81,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="goods name"
+        android:fontFamily="@font/mainfont"
         app:layout_constraintBottom_toBottomOf="@+id/goodsImage"
         app:layout_constraintStart_toEndOf="@+id/goodsImage"
         app:layout_constraintTop_toTopOf="@+id/goodsImage"
@@ -175,7 +131,7 @@
         app:srcCompat="@drawable/accpet_button_on" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/step1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/mainfont"
@@ -190,7 +146,7 @@
         app:layout_constraintVertical_bias="0.55" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/step2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/mainfont"
@@ -205,7 +161,7 @@
         app:layout_constraintVertical_bias="0.55" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/step3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/mainfont"
@@ -218,5 +174,146 @@
         app:layout_constraintStart_toStartOf="@+id/imageView13"
         app:layout_constraintTop_toTopOf="@+id/imageView13"
         app:layout_constraintVertical_bias="0.55" />
+
+    <TextView
+        android:id="@+id/notice_to_buyer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="only buyer"
+        android:fontFamily="@font/mainfont"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+        app:layout_constraintEnd_toStartOf="@+id/imageView14"
+        app:layout_constraintTop_toTopOf="@+id/imageView14"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/notice_to_seller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/mainfont"
+        android:text="only seller"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+        app:layout_constraintEnd_toStartOf="@+id/imageView15"
+        app:layout_constraintTop_toTopOf="@+id/imageView15"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/notice_to_buyer_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="only buyer"
+        android:fontFamily="@font/mainfont"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+        app:layout_constraintEnd_toStartOf="@+id/imageView16"
+        app:layout_constraintTop_toTopOf="@+id/imageView16"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/menubar"
+        android:layout_width="1080px"
+        android:layout_height="243px"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/menubar" />
+
+    <ImageView
+        android:id="@+id/myauctionbtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/menubar"
+        app:srcCompat="@drawable/myauction" />
+
+    <ImageView
+        android:id="@+id/homebtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menubar"
+        app:layout_constraintEnd_toStartOf="@+id/profilebtn"
+        app:layout_constraintStart_toEndOf="@+id/myauctionbtn"
+        app:srcCompat="@drawable/home" />
+
+    <ImageView
+        android:id="@+id/profilebtn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/menubar"
+        app:srcCompat="@drawable/profile" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="if buyer send money to here -> accept"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="virtual account number"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="222dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="if buyer received the goods successfully -> accept"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="473dp" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Switch"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="342dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="choose Delivery or direct transaction"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="323dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="show buyer address or phoneNum"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="371dp" />
+
+    <ImageView
+        android:id="@+id/reject_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/menubar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/reject_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
