@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,8 +36,10 @@ public class Profile extends AppCompatActivity {
 
     ImageView homeButton;
     ImageView logoutButton;
-    SharedPreferences spUser;
-    SharedPreferences spLogin;
+    ImageView modificationButton;
+
+   // SharedPreferences spUser;
+    //SharedPreferences spLogin;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -47,8 +50,8 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        spUser = getSharedPreferences("uEmail", MODE_PRIVATE);
-        spLogin = getSharedPreferences("logged", MODE_PRIVATE);
+        //spUser = getSharedPreferences("uEmail", MODE_PRIVATE);
+        //spLogin = getSharedPreferences("logged", MODE_PRIVATE);
 
 
         //Google way
@@ -58,7 +61,7 @@ public class Profile extends AppCompatActivity {
 
         //Get the user data from database
         //String email = getIntent().getStringExtra("user");
-        String email = spUser.getString("uEmail", "NULL");
+        //String email = spUser.getString("uEmail", "NULL");
 
         TextView uEmail = findViewById(R.id.UserEmail);
         TextView uName = findViewById(R.id.UserName);
@@ -122,6 +125,16 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+
+        //Modification Button
+        modificationButton = findViewById(R.id.modifyBtn);
+        modificationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, modificationPage.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {

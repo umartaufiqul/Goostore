@@ -115,7 +115,6 @@ public class Registration extends AppCompatActivity {
                                             public void onFailure(@NonNull Exception e) {
                                                 Toast.makeText(Registration.this, "Image add failed" + e.getMessage(),
                                                 Toast.LENGTH_LONG).show();
-                                                return;
                                             }
                                         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                             @Override

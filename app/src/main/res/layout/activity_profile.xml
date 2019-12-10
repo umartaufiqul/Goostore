@@ -58,7 +58,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:fontFamily="@font/mainfont"
-        android:text="UserName"
         android:textColor="@color/Black"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/Thumbnail"
@@ -165,7 +164,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/mainfont"
-        android:text="UserEmail"
         android:textColor="@color/Yellow3"
         app:layout_constraintStart_toEndOf="@+id/Email"
         app:layout_constraintTop_toTopOf="@+id/infoBox" />
@@ -177,7 +175,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="14dp"
         android:fontFamily="@font/mainfont"
-        android:text="UserPassword"
         android:textColor="@color/Yellow3"
         app:layout_constraintStart_toEndOf="@+id/PW"
         app:layout_constraintTop_toBottomOf="@+id/UserEmail" />
@@ -189,7 +186,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="14dp"
         android:fontFamily="@font/mainfont"
-        android:text="UserPhoneNumber"
         android:textColor="@color/Yellow3"
         app:layout_constraintStart_toEndOf="@+id/PhoneNum"
         app:layout_constraintTop_toBottomOf="@+id/userPassword" />
@@ -201,7 +197,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="14dp"
         android:fontFamily="@font/mainfont"
-        android:text="UserAddress"
         android:textColor="@color/Yellow3"
         app:layout_constraintStart_toEndOf="@+id/address"
         app:layout_constraintTop_toBottomOf="@+id/userPhoneNumber" />
@@ -213,13 +208,12 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="14dp"
         android:fontFamily="@font/mainfont"
-        android:text="UserBankAccount"
         android:textColor="@color/Yellow3"
         app:layout_constraintStart_toEndOf="@+id/bankAccount"
         app:layout_constraintTop_toBottomOf="@+id/userAddress" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/modifyBtn"
         android:layout_width="471px"
         android:layout_height="150px"
         android:layout_marginStart="20dp"
@@ -237,7 +231,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.117"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/modifyBtn"
         app:layout_constraintTop_toBottomOf="@+id/infoBox"
         app:srcCompat="@drawable/logout" />
 

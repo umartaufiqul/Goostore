@@ -40,7 +40,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <TextView
-                    android:id="@+id/editTExtReg"
+                    android:id="@+id/editEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
@@ -55,7 +55,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText
-                android:id="@+id/editTextReg2"
+                android:id="@+id/editPassword"
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
                 android:layout_marginStart="0dp"
@@ -76,7 +76,7 @@
 
 
             <EditText
-                android:id="@+id/editTextReg3"
+                android:id="@+id/editName"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:layout_marginStart="0dp"
@@ -96,7 +96,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/editText" />
 
             <EditText
-                android:id="@+id/editTextReg4"
+                android:id="@+id/editPhone"
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
                 android:layout_marginStart="0dp"
@@ -116,7 +116,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/editText" />
 
             <EditText
-                android:id="@+id/editTextReg5"
+                android:id="@+id/editAddress"
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
                 android:layout_marginStart="0dp"
@@ -137,7 +137,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/editText" />
 
             <EditText
-                android:id="@+id/editTextReg6"
+                android:id="@+id/editBankAcc"
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
                 android:layout_marginStart="0dp"
@@ -175,7 +175,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/editImage"
                     android:layout_width="55dp"
                     android:layout_height="64dp"
                     app:layout_constraintEnd_toEndOf="@+id/addImage"
