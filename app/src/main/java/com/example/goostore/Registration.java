@@ -1,7 +1,6 @@
 package com.example.goostore;
 
 import android.Manifest;
-import android.accessibilityservice.GestureDescription;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -35,11 +34,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Registration extends AppCompatActivity {
     private SharedPreferences sp;
@@ -151,7 +147,7 @@ public class Registration extends AppCompatActivity {
             if (requestCode == PICK_IMAGE) {
                 try {
                     Uri imgData = data.getData();
-                    TextView img = findViewById(R.id.textView);
+                    TextView img = findViewById(R.id.insert_your_image);
                     img.setText(imgData.toString());
                     inputStream = Registration.this.getContentResolver().openInputStream(imgData);
                 } catch (FileNotFoundException e) {
