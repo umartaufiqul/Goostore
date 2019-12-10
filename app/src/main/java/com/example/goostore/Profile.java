@@ -50,18 +50,10 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        //spUser = getSharedPreferences("uEmail", MODE_PRIVATE);
-        //spLogin = getSharedPreferences("logged", MODE_PRIVATE);
-
-
         //Google way
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         mDB = FirebaseDatabase.getInstance().getReference();
-
-        //Get the user data from database
-        //String email = getIntent().getStringExtra("user");
-        //String email = spUser.getString("uEmail", "NULL");
 
         TextView uEmail = findViewById(R.id.UserEmail);
         TextView uName = findViewById(R.id.UserName);
@@ -84,7 +76,7 @@ public class Profile extends AppCompatActivity {
                     uAddress.setText(mUser.getAddress());
                     uBankAcc.setText(mUser.getBankAccount());
 
-                    StorageReference profPicLoc = sRef.child(mUser.getProfilePic());
+                    StorageReference profPicLoc = sRef.child(firebaseUser.getUid()+"/profile.jpg");
                     profPicLoc.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
@@ -120,7 +112,6 @@ public class Profile extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Profile.this, MainPage.class);
                 FirebaseAuth.getInstance().signOut();
-                //spLogin.edit().putBoolean("logged", false).apply();
                 startActivity(intent);
             }
         });

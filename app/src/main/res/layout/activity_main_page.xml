@@ -226,7 +226,7 @@
                         android:layout_height="100dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
-                        app:srcCompat="@drawable/other" />
+                        app:srcCompat="@drawable/other"/>
 
                     <TextView
                         android:id="@+id/textView12"

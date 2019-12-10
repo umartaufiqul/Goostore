@@ -37,6 +37,8 @@ import com.squareup.picasso.Picasso;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -88,7 +90,9 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
         firebaseUser = firebaseAuth.getCurrentUser();
 
         mStorageRef = FirebaseStorage.getInstance().getReference("Goods");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Gooods");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Goods");
+
+        mEditTextUserEmail.setText(firebaseUser.getEmail());
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -221,10 +225,40 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
                             while(!uriTask.isSuccessful());
                             Uri downloadUrl = uriTask.getResult();
                             Goods goods = new Goods(mEditTextBookName.getText().toString().trim(), downloadUrl.toString(), mEditTextBasePrice.getText().toString().trim(),
-                                    mEditeTextCategory.getText().toString().trim(), mEditTextUserEmail.getText().toString().trim(), reStr);
+                                    mEditeTextCategory.getText().toString().trim(), firebaseUser.getEmail(), reStr);
 
                             String goodsId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(goodsId).setValue(goods);
+
+                            Map<String, Object> update = new HashMap<>();
+                            DatabaseReference userGood = FirebaseDatabase.getInstance().getReference().child("users").child(firebaseUser.getUid()).child("goods");
+                            userGood.orderByKey().equalTo("count").addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    if (!dataSnapshot.exists()) {
+                                        update.put("count", 1);
+                                        update.put("good1", goodsId);
+                                        userGood.updateChildren(update);
+                                    }
+                                    else {
+                                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                                            Toast.makeText(Goods_Add_Delete_Page.this, "COUNT WORK", Toast.LENGTH_LONG).show();
+                                            int count = childSnapshot.getValue(Integer.class);
+                                            count++;
+                                            update.put("count", count);
+                                            update.put("good"+Integer.toString(count), goodsId);
+                                            userGood.updateChildren(update);
+                                        }
+                                    }
+                                    Intent intent = new Intent(Goods_Add_Delete_Page.this, MainPage.class);
+                                    startActivity(intent);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

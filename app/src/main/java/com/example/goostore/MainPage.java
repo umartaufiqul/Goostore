@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,7 +24,7 @@ public class MainPage extends AppCompatActivity{
     boolean checkLogin = false;
     SharedPreferences sp;
     //Add a button for see more.
-    TextView SeeMoreButton;
+    ImageView SeeMoreButton;
 
 
     @Override
@@ -31,7 +32,7 @@ public class MainPage extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        SeeMoreButton = findViewById(R.id.text_view_see_more);
+        SeeMoreButton = findViewById(R.id.book);
         //sp = getSharedPreferences("logged", MODE_PRIVATE);
         profileButton = findViewById(R.id.profilebtn);
         profileButton.setOnClickListener(new View.OnClickListener() {

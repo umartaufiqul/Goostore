@@ -62,7 +62,7 @@ public class Goods{
 
     public void setBasePrice(Integer basePrice){
         if(basePrice < 1){
-            basePrice = 1;
+            BasePrice = "1";
         }
         BasePrice = basePrice.toString();
     }
