@@ -17,7 +17,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".PaymentPage"></activity>
         <activity android:name=".modificationPage" />
-        <activity android:name=".Goods_item" />
         <activity android:name=".myAuctionPage" />
         <activity android:name=".categoryPage" />
         <activity android:name=".GoodsPage" />

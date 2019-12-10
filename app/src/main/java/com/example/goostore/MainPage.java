@@ -21,6 +21,7 @@ import java.util.List;
 public class MainPage extends AppCompatActivity{
 
     ImageView profileButton;
+    ImageView myAuctionBtn;
     boolean checkLogin = false;
     SharedPreferences sp;
     //Add a button for see more.
@@ -38,14 +39,8 @@ public class MainPage extends AppCompatActivity{
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*if(sp.getBoolean("logged", false)){
-                    Intent intent = new Intent(MainPage.this, Profile.class);
-                    startActivity(intent);
-                }
-                else{*/
                 Intent intent = new Intent(MainPage.this, Login.class);
                    startActivity(intent);
-                //}
             }
         });
 
@@ -53,6 +48,15 @@ public class MainPage extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainPage.this, categoryPage.class);
+                startActivity(intent);
+            }
+        });
+
+        myAuctionBtn = findViewById(R.id.myauctionbtn);
+        myAuctionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainPage.this, myAuctionPage.class);
                 startActivity(intent);
             }
         });

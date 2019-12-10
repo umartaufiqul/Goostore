@@ -80,7 +80,7 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
         mButtonProfile = findViewById(R.id.profilebtn);
         mButtonChooseImage = findViewById(R.id.button_choose_image);
         mButtonUpload = findViewById(R.id.button_upload);
-        mEditTextBookName = findViewById(R.id.edit_text_base_price);
+        mEditTextBookName = findViewById(R.id.edit_text_goods_name);
         mEditTextUserEmail = findViewById(R.id.edit_text_user_email);
         mEditTextBasePrice = findViewById(R.id.edit_text_base_price);
         mEditeTextCategory = findViewById(R.id.edit_text_category);

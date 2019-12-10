@@ -15,7 +15,6 @@ public class Goods{
     private String BasePrice;
     private String Category;
     private String SellerEmail;
-    private String BuyerEmail;
     private String DeadLine;
 
     public Goods(){
@@ -37,7 +36,6 @@ public class Goods{
         Category = category;
         SellerEmail = selleremail;
         DeadLine = deadLine;
-        BuyerEmail = "";
     }
 
     public String getName(){
@@ -60,11 +58,11 @@ public class Goods{
         return BasePrice;
     }
 
-    public void setBasePrice(Integer basePrice){
-        if(basePrice < 1){
+    public void setBasePrice(String basePrice){
+        if(Integer.parseInt(basePrice) < 1){
             BasePrice = "1";
         }
-        BasePrice = basePrice.toString();
+        BasePrice = basePrice;
     }
 
     public String getCategory(){
@@ -89,14 +87,6 @@ public class Goods{
 
     public void setDeadLine(String deadline){
         DeadLine = deadline;
-    }
-
-    public String getBuyerEmial(){
-        return BuyerEmail;
-    }
-
-    public void setBuyerEmail(String email){
-        BuyerEmail = email;
     }
 
     @Exclude
