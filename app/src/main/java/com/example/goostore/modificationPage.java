@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
@@ -22,6 +23,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -118,9 +122,10 @@ public class modificationPage extends AppCompatActivity {
         if (changeImage == 1) {
             updateProfilePic();
         }
+        updatePassword(password);
         mDB.child("users").child(firebaseUser.getUid()).updateChildren(update).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onSuccess(Void aVoid) {
+            public void onSuccess(Void Void) {
                 Toast.makeText(modificationPage.this, "Modification success", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(modificationPage.this, Profile.class);
                 startActivity(intent);
@@ -206,10 +211,36 @@ public class modificationPage extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    public void readFile() {
+    private void readFile() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+    }
+
+    private void updatePassword(String newPassword) {
+        EditText oldPass = findViewById(R.id.editOldPassword);
+        String oldpass = oldPass.getText().toString();
+        AuthCredential credential = EmailAuthProvider.getCredential(firebaseUser.getEmail(), oldpass);
+        firebaseUser.reauthenticate(credential).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                firebaseUser.updatePassword(newPassword).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(modificationPage.this, "Password update fail", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(modificationPage.this, modificationPage.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(modificationPage.this, "Wrong old password", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(modificationPage.this, modificationPage.class);
+                startActivity(intent);
+            }
+        });
     }
 }
