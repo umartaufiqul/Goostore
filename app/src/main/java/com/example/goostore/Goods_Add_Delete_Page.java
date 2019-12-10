@@ -177,8 +177,12 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null){
             mImageUri = data.getData();
-
-            Picasso.get().load(mImageUri).into(mImageView);
+            mImageView = findViewById(R.id.image_view);
+            try {
+                Picasso.get().load(mImageUri).into(mImageView);
+            } catch (IllegalArgumentException e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            }
         }
     }
 

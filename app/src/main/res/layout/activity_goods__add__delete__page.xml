@@ -54,8 +54,8 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="1038px"
-        android:layout_height="0dp"
+        android:layout_width="341dp"
+        android:layout_height="426dp"
         android:layout_marginTop="30dp"
         app:layout_constraintBottom_toTopOf="@+id/button_upload"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +128,7 @@
                     android:id="@+id/button_choose_image"
                     android:layout_width="150px"
                     android:layout_height="138px"
-                    android:layout_marginEnd="336dp"
+                    android:layout_marginEnd="276dp"
                     android:text="Choose Image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
