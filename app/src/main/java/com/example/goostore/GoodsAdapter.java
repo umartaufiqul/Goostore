@@ -23,12 +23,19 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ImageViewHol
 
     private Context mContext;
     private List<Goods> mGoods;
+    private String selectedCategory = "";
     private OnItemClickListener mListener;
 
 
-    public GoodsAdapter(Context context, List<Goods> goods) {
+    public GoodsAdapter(Context context, List<Goods> goods){
         mContext = context;
         mGoods = goods;
+    }
+
+    public GoodsAdapter(Context context, List<Goods> goods, String category) {
+        mContext = context;
+        mGoods = goods;
+        selectedCategory = category;
     }
 
 
@@ -42,14 +49,29 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ImageViewHol
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Goods goodsCurrent = mGoods.get(position);
-        holder.textViewName.setText(goodsCurrent.getName());
-        holder.textViewCurrentPrice.setText(goodsCurrent.getBasePrice() + "WON");
-        holder.textViewDeadLine.setText(goodsCurrent.getDeadLine());
-        Picasso.get()
-                .load(goodsCurrent.getImageUrl())
-                .placeholder(R.mipmap.ic_launcher)
-                .fit()
-                .into(holder.imageView);
+
+        //This situation is for the category page
+        if(goodsCurrent.getCategory().equals(selectedCategory)) {
+            holder.textViewName.setText(goodsCurrent.getName());
+            holder.textViewCurrentPrice.setText(goodsCurrent.getBasePrice() + "WON");
+            holder.textViewDeadLine.setText(goodsCurrent.getDeadLine());
+            Picasso.get()
+                    .load(goodsCurrent.getImageUrl())
+                    .placeholder(R.mipmap.ic_launcher)
+                    .fit()
+                    .into(holder.imageView);
+        } else if(selectedCategory.equals("")){
+
+            //This situation is for myAuction Page
+            holder.textViewName.setText(goodsCurrent.getName());
+            holder.textViewCurrentPrice.setText(goodsCurrent.getBasePrice() + "WON");
+            holder.textViewDeadLine.setText(goodsCurrent.getDeadLine());
+            Picasso.get()
+                    .load(goodsCurrent.getImageUrl())
+                    .placeholder(R.mipmap.ic_launcher)
+                    .fit()
+                    .into(holder.imageView);
+        }
     }
 
     @Override

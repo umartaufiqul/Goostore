@@ -177,16 +177,13 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode, resultCode, data);
+        mImageView = findViewById(R.id.imageView);
 
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null){
             mImageUri = data.getData();
-            mImageView = findViewById(R.id.image_view);
-            try {
-                Picasso.get().load(mImageUri).into(mImageView);
-            } catch (IllegalArgumentException e) {
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-            }
+
+            Picasso.get().load(mImageUri).into(mImageView);
         }
     }
 
@@ -201,9 +198,9 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
             //给图片起名字
             StorageReference fileReference = mStorageRef.child(firebaseUser.getUid() + "/" + System.currentTimeMillis() + "/" + "image1." + getFileExtension(mImageUri));
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd HH:mm:ss");
             Calendar rightNow = Calendar.getInstance();
-            rightNow.add(Calendar.DAY_OF_YEAR, result);
+            rightNow.add(Calendar.DATE, result);
             Date dt1 = rightNow.getTime();
             String reStr = sdf.format(dt1);
 
