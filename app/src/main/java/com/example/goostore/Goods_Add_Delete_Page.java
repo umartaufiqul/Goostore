@@ -76,9 +76,9 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
         mEditTextUserEmail = findViewById(R.id.edit_text_user_email);
         mEditTextBasePrice = findViewById(R.id.edit_text_base_price);
         mEditeTextCategory = findViewById(R.id.edit_text_category);
-        mEditeTextDeadLineDay = findViewById((R.id.edit_text_deadline_mon));
-        mEditeTextDeadLineDay = findViewById((R.id.edit_text_deadline_day));
-        mEditeTextDeadLineDay = findViewById((R.id.edit_text_deadline_year));
+        //mEditeTextDeadLineDay = findViewById((R.id.edit_text_deadline_mon));
+        //mEditeTextDeadLineDay = findViewById((R.id.edit_text_deadline_day));
+        //mEditeTextDeadLineDay = findViewById((R.id.edit_text_deadline_year));
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();

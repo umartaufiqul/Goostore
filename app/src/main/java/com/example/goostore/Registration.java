@@ -12,8 +12,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -59,7 +61,7 @@ public class Registration extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         //Add the image button
-        TextView addImage = findViewById(R.id.addImage);
+        ImageView addImage = findViewById(R.id.imageView6);
         addImage.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,8 +149,13 @@ public class Registration extends AppCompatActivity {
             if (requestCode == PICK_IMAGE) {
                 try {
                     Uri imgData = data.getData();
+                    Cursor cursor = getContentResolver().query(imgData, null, null, null, null);
+                    int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
                     TextView img = findViewById(R.id.insert_your_image);
-                    img.setText(imgData.toString());
+                    cursor.moveToFirst();
+                    img.setText(cursor.getString(nameIndex));
+                    cursor.close();
+                    //img.setText(imgData.toString());
                     inputStream = Registration.this.getContentResolver().openInputStream(imgData);
                 } catch (FileNotFoundException e) {
                     return;
