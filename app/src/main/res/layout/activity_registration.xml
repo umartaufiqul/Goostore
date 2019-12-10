@@ -179,6 +179,8 @@
                     android:text="Insert Image"
                     android:textSize="18dp"
                     android:textColor="@color/Black"
+                    android:ellipsize="end"
+                    android:maxLines="2"
                     app:layout_constraintBottom_toBottomOf="@+id/addImage"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
