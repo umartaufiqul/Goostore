@@ -224,82 +224,20 @@
         app:layout_constraintStart_toStartOf="@+id/GoodName"
         app:layout_constraintTop_toBottomOf="@+id/deadline" />
 
-    <TextView
-        android:id="@+id/DeadlineSlash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/mainfont"
-        android:text="/"
-        android:textColor="@color/Black"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/deadlineMonth"
-        app:layout_constraintTop_toBottomOf="@+id/price_won" />
+
 
     <TextView
-        android:id="@+id/deadlineDubledot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/mainfont"
-        android:text=":"
-        android:textColor="@color/Black"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/deadlinehour"
-        app:layout_constraintTop_toBottomOf="@+id/price_won" />
-
-    <TextView
-        android:id="@+id/deadlineMonth"
+        android:id="@+id/text_view_deadline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/mainfont"
-        android:text="12"
+        android:text="2019-12-10 21:38:00"
         android:textColor="@color/Black"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="@+id/price2"
         app:layout_constraintTop_toBottomOf="@+id/price_won" />
 
-    <TextView
-        android:id="@+id/deadlinedate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/mainfont"
-        android:text="20"
-        android:textColor="@color/Black"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/DeadlineSlash"
-        app:layout_constraintTop_toBottomOf="@+id/price_won" />
-
-    <TextView
-        android:id="@+id/deadlinehour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/mainfont"
-        android:text="23"
-        android:textColor="@color/Black"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/deadlinedate"
-        app:layout_constraintTop_toBottomOf="@+id/price_won" />
-
-    <TextView
-        android:id="@+id/deadlineminute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/mainfont"
-        android:text="59"
-        android:textColor="@color/Black"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/deadlineDubledot"
-        app:layout_constraintTop_toBottomOf="@+id/price_won" />
 
     <TextView
         android:id="@+id/good_category"
@@ -310,8 +248,8 @@
         android:text="Book"
         android:textColor="@color/Black"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/deadlineMonth"
-        app:layout_constraintTop_toBottomOf="@+id/DeadlineSlash" />
+        app:layout_constraintStart_toStartOf="@+id/text_view_deadline"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_deadline" />
 
     <TextView
         android:id="@+id/PageNum"

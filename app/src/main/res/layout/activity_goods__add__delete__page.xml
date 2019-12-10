@@ -55,12 +55,13 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="1038px"
-        android:layout_height="417dp"
-        app:layout_constraintBottom_toTopOf="@+id/menubar"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_upload"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_category"
-        app:layout_constraintVertical_bias="0.536">
+        app:layout_constraintTop_toBottomOf="@+id/category_image"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,11 +74,11 @@
                 android:layout_height="138px"
                 android:layout_below="@id/button_choose_image"
                 android:background="@drawable/good_name"
-                android:hint="Enter Goods Name"
                 android:fontFamily="@font/mainfont"
+                android:hint="Enter Goods Name"
+                android:paddingLeft="15dp"
                 android:textColor="@color/Black"
-                android:textSize="14dp"
-                android:paddingLeft="15dp"/>
+                android:textSize="14dp" />
 
             <EditText
                 android:id="@+id/edit_text_user_email"
@@ -105,85 +106,56 @@
                 android:textColor="@color/Black"
                 android:textSize="14dp" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp">
-
-                <ImageView
-                    android:id="@+id/deadline_bar"
-                    android:layout_width="1038px"
-                    android:layout_height="138px"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/insert_image" />
-
-                <TextView
-                    android:id="@+id/deadline_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:fontFamily="@font/mainfont"
-                    android:text="deadline"
-                    android:textColor="@color/Black"
-                    android:textSize="14dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/deadline_bar"
-                    app:layout_constraintTop_toTopOf="@+id/deadline_bar" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/edit_text_deadline"
+                android:layout_width="1038px"
+                android:layout_height="138px"
+                android:layout_below="@id/edit_text_base_price"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/good_name"
+                android:fontFamily="@font/mainfont"
+                android:hint="DeadLine(Enter 2 to 7)(days)"
+                android:paddingLeft="15dp"
+                android:textColor="@color/Black"
+                android:textSize="14dp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp">
-
-                <ImageView
-                    android:id="@+id/Image_bar"
-                    android:layout_width="1038px"
-                    android:layout_height="138px"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/insert_image" />
 
                 <ImageView
                     android:id="@+id/button_choose_image"
                     android:layout_width="150px"
                     android:layout_height="138px"
+                    android:layout_marginEnd="336dp"
                     android:text="Choose Image"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/Image_bar"
-                    app:layout_constraintTop_toTopOf="@+id/Image_bar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/insert_image_button" />
 
                 <TextView
                     android:id="@+id/insert_image_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/mainfont"
                     android:text="Insert Image"
                     android:textColor="@color/Black"
                     android:textSize="14dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/Image_bar"
-                    app:layout_constraintStart_toStartOf="@+id/Image_bar"
-                    app:layout_constraintTop_toTopOf="@+id/Image_bar" />
+                    app:layout_constraintBottom_toBottomOf="@+id/button_choose_image"
+                    app:layout_constraintStart_toEndOf="@+id/button_choose_image"
+                    app:layout_constraintTop_toTopOf="@+id/button_choose_image"
+                    app:layout_constraintVertical_bias="0.5" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/image_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@id/progress_bar"
+                android:layout_height="104dp"
                 android:layout_below="@id/edit_text_category"
                 android:layout_marginTop="10dp" />
 
@@ -194,7 +166,6 @@
         android:id="@+id/edit_text_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/progress_bar"
         android:layout_marginStart="14dp"
         android:background="@null"
         android:fontFamily="@font/mainfont"
@@ -206,6 +177,13 @@
         app:layout_constraintVertical_bias="0.5" />
 
 
+    <!--<ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_upload" />-->
+
     <ImageView
         android:id="@+id/button_upload"
         android:layout_width="wrap_content"
@@ -216,41 +194,21 @@
         android:text="Upload"
         app:layout_constraintBottom_toTopOf="@+id/menubar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2"
         app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/creat_auction_button" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button_upload" />
-
-    <TextView
-        android:id="@+id/text_view_show_uploads"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button_upload"
-        android:layout_alignBottom="@+id/button_upload"
-        android:layout_marginStart="25dp"
-        android:gravity="center"
-        android:text="Show My Goods"
-        android:textSize="16sp" />
-
     <ImageView
         android:id="@+id/category_image"
         android:layout_width="90dp"
         android:layout_height="83dp"
-        app:layout_constraintBottom_toBottomOf="@+id/menubar"
+        android:layout_marginTop="45dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/progress_bar"
-        app:layout_constraintVertical_bias="0.071"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/book" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

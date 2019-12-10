@@ -31,7 +31,7 @@ public class MainPage extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        SeeMoreButton = findViewById(R.id.see_more);
+        SeeMoreButton = findViewById(R.id.text_view_see_more);
         //sp = getSharedPreferences("logged", MODE_PRIVATE);
         profileButton = findViewById(R.id.profilebtn);
         profileButton.setOnClickListener(new View.OnClickListener() {

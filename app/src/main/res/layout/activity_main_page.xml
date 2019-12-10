@@ -75,6 +75,7 @@
                     android:textSize="22sp" />
 
                 <TextView
+                    android:id="@+id/text_view_see_more"
                     android:layout_width="82dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

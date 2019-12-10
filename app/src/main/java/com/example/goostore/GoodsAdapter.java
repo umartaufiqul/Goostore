@@ -44,7 +44,7 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ImageViewHol
         Goods goodsCurrent = mGoods.get(position);
         holder.textViewName.setText(goodsCurrent.getName());
         holder.textViewCurrentPrice.setText(goodsCurrent.getBasePrice() + "WON");
-        holder.textViewDeadLine.setText(goodsCurrent.getDeadLineMon() + "/" + goodsCurrent.getDeadLineDay() + ", " + goodsCurrent.getDeadLineYear() + ". 23:59");
+        holder.textViewDeadLine.setText(goodsCurrent.getDeadLine());
         Picasso.get()
                 .load(goodsCurrent.getImageUrl())
                 .placeholder(R.mipmap.ic_launcher)

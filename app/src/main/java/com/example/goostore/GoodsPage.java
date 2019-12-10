@@ -42,10 +42,7 @@ public class GoodsPage extends AppCompatActivity {
     private TextView mTextViewGoodsName;
     private TextView mTextViewCurrentPrice;
     private TextView mTextViewGoodsCategory;
-    private TextView mTextViewDeadLineMonth;
-    private TextView mTextViewDeadLineDay;
-    private TextView mTextViewDeadLineHour;
-    private TextView mTextViewDeadLineMin;
+    private TextView mTextViewDeadLine;
     private EditText mEditTextBidPrice;
 
     private Uri mImageUri;
@@ -75,16 +72,13 @@ public class GoodsPage extends AppCompatActivity {
         mSellerImage = findViewById(R.id.seller_image);
         mTextViewGoodsName = findViewById(R.id.GoodName);
         mTextViewCurrentPrice = findViewById(R.id.price2);
-        mTextViewDeadLineMonth = findViewById(R.id.deadlineMonth);
-        mTextViewDeadLineDay = findViewById(R.id.deadlinedate);
-        mTextViewDeadLineHour = findViewById(R.id.deadlinehour);
-        mTextViewDeadLineMin = findViewById(R.id.deadlineminute);
+        mTextViewDeadLine = findViewById(R.id.text_view_deadline);
         mTextViewGoodsCategory = findViewById(R.id.good_category);
         mTextViewSellerName = findViewById(R.id.seller_name);
 
 
         mStorageRef = FirebaseStorage.getInstance().getReference("Goods");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Goods");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("goostore").child("Goods");
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -137,10 +131,7 @@ public class GoodsPage extends AppCompatActivity {
                     mTextViewCurrentPrice.setText(goods.getBasePrice());
                     mTextViewGoodsCategory.setText(goods.getCategory());
                     mEditTextBidPrice.setText(goods.getBasePrice());
-                    mTextViewDeadLineMonth.setText(goods.getDeadLineMon());
-                    mTextViewDeadLineDay.setText(goods.getDeadLineDay());
-                    mTextViewDeadLineHour.setText("23");
-                    mTextViewDeadLineMin.setText("59");
+                    mTextViewDeadLine.setText(goods.getDeadLine());
                     mTextViewSellerName.setText(goods.getSellerEmail());
                     BidPrice = goods.getBasePrice();
 

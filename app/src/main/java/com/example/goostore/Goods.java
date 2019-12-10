@@ -16,15 +16,13 @@ public class Goods{
     private String Category;
     private String SellerEmail;
     private String BuyerEmail;
-    private String DeadLineYear;
-    private String DeadLineMon;
-    private String DeadLineDay;
+    private String DeadLine;
 
     public Goods(){
 
     }
 
-    public Goods(String name, String imageUrl,String basePrice, String category, String selleremail, String deadLineYear, String deadLineMon, String deadLineDay) {
+    public Goods(String name, String imageUrl,String basePrice, String category, String selleremail, String deadLine) {
         if (name.trim().equals("")) {
             name = "No name";
         }
@@ -38,9 +36,7 @@ public class Goods{
         BasePrice = basePrice;
         Category = category;
         SellerEmail = selleremail;
-        DeadLineDay = deadLineDay;
-        DeadLineMon = deadLineMon;
-        DeadLineYear = deadLineYear;
+        DeadLine = deadLine;
         BuyerEmail = "";
     }
 
@@ -87,28 +83,12 @@ public class Goods{
         SellerEmail = email;
     }
 
-    public String getDeadLineYear(){
-        return DeadLineYear;
+    public String getDeadLine(){
+        return DeadLine;
     }
 
-    public void setDeadLineYear(String deadlineYear){
-        DeadLineYear = deadlineYear;
-    }
-
-    public String getDeadLineMon(){
-        return DeadLineMon;
-    }
-
-    public void setDeadLineMon(String deadLineMon){
-        DeadLineMon = deadLineMon;
-    }
-
-    public String getDeadLineDay(){
-        return DeadLineDay;
-    }
-
-    public void setDeadLineDay(String deadLineDay){
-        DeadLineDay = deadLineDay;
+    public void setDeadLine(String deadline){
+        DeadLine = deadline;
     }
 
     public String getBuyerEmial(){

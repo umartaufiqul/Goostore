@@ -34,24 +34,27 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.annotation.Nullable;
 
 public class Goods_Add_Delete_Page extends AppCompatActivity{
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    private Button mButtonChooseImage;
-    private Button mButtonUpload;
-    private TextView mTextViewShowUpload;
+    private ImageView mButtonMyAuction;
+    private ImageView mButtonHome;
+    private ImageView mButtonProfile;
+    private ImageView mButtonChooseImage;
+    private ImageView mButtonUpload;
     private EditText mEditTextBookName;
     private EditText mEditTextUserEmail;
     private EditText mEditTextBasePrice;
     private EditText mEditeTextCategory;
-    private EditText mEditeTextDeadLineMon;
-    private EditText mEditeTextDeadLineDay;
-    private EditText mEditeTextDeadLineYear;
+    private EditText mEditeTextDeadLine;
     private ImageView mImageView;
-    private ProgressBar mProgressBar;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
@@ -69,16 +72,17 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods__add__delete__page);
 
+
+        mButtonMyAuction = findViewById(R.id.myauctionbtn);
+        mButtonHome = findViewById(R.id.homebtn);
+        mButtonProfile = findViewById(R.id.profilebtn);
         mButtonChooseImage = findViewById(R.id.button_choose_image);
         mButtonUpload = findViewById(R.id.button_upload);
-        mTextViewShowUpload = findViewById(R.id.text_view_show_uploads);
         mEditTextBookName = findViewById(R.id.edit_text_base_price);
         mEditTextUserEmail = findViewById(R.id.edit_text_user_email);
         mEditTextBasePrice = findViewById(R.id.edit_text_base_price);
         mEditeTextCategory = findViewById(R.id.edit_text_category);
-        //mEditeTextDeadLineDay = findViewById((R.id.edit_text_deadline_mon));
-        //mEditeTextDeadLineDay = findViewById((R.id.edit_text_deadline_day));
-        //mEditeTextDeadLineDay = findViewById((R.id.edit_text_deadline_year));
+        mEditeTextDeadLine = findViewById(R.id.edit_text_deadline);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -97,6 +101,43 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
             }
         });
 
+
+        mButtonMyAuction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(firebaseUser != null){
+                    Intent intent = new Intent(Goods_Add_Delete_Page.this, myAuctionPage.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Goods_Add_Delete_Page.this, Login.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        mButtonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (firebaseUser != null) {
+                    Intent intent = new Intent(Goods_Add_Delete_Page.this, MainPage.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        mButtonProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(firebaseUser != null){
+                    Intent intent = new Intent(Goods_Add_Delete_Page.this, Profile.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Goods_Add_Delete_Page.this, Login.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,20 +148,18 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
         mButtonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mUploadTask != null && mUploadTask.isInProgress()) {
+                String days = mEditeTextDeadLine.getText().toString().trim();
+                Integer result = Integer.parseInt(days);
+                if(result < 2 || result > 7) {
+                    Toast.makeText(Goods_Add_Delete_Page.this, "Please enter the deadline again", Toast.LENGTH_SHORT).show();
+                }else if(mUploadTask != null && mUploadTask.isInProgress()) {
                     Toast.makeText(Goods_Add_Delete_Page.this, "Upload in Progress", Toast.LENGTH_SHORT).show();
                 }else{
-                    uploadFile();
+                    uploadFile(result);
                 }
             }
         });
 
-        mTextViewShowUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openImageActivity();
-            }
-        });
 
     }
 
@@ -149,10 +188,16 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
-    private void uploadFile(){
+    private void uploadFile(Integer result){
         if(mImageUri != null){
             //给图片起名字
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+            Calendar rightNow = Calendar.getInstance();
+            rightNow.add(Calendar.DAY_OF_YEAR, result);
+            Date dt1 = rightNow.getTime();
+            String reStr = sdf.format(dt1);
 
             mUploadTask = fileReference.putFile(mImageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -163,7 +208,6 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
                                 //What we will do after delay
                                 @Override
                                 public void run() {
-                                    mProgressBar.setProgress(0);
                                 }
                             }, 500);
                             //Upload 成功后将图片的名字和路径赋给Goods
@@ -173,8 +217,7 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
                             while(!uriTask.isSuccessful());
                             Uri downloadUrl = uriTask.getResult();
                             Goods goods = new Goods(mEditTextBookName.getText().toString().trim(), downloadUrl.toString(), mEditTextBasePrice.getText().toString().trim(),
-                                    mEditeTextCategory.getText().toString().trim(), mEditTextUserEmail.getText().toString().trim(), mEditeTextDeadLineYear.getText().toString().trim(),
-                                    mEditeTextDeadLineMon.getText().toString().trim(), mEditeTextDeadLineDay.getText().toString().trim());
+                                    mEditeTextCategory.getText().toString().trim(), mEditTextUserEmail.getText().toString().trim(), reStr);
 
                             String goodsId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(goodsId).setValue(goods);
@@ -184,13 +227,6 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(Goods_Add_Delete_Page.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                            mProgressBar.setProgress((int) progress);
                         }
                     });
         } else {
