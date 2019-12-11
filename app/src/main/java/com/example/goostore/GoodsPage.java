@@ -164,15 +164,19 @@ public class GoodsPage extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if (!dataSnapshot.exists()) {
                                             update.put("count", 1);
-                                            update.put("item1", goodsId);
                                             userGood.updateChildren(update);
+                                            update.clear();
+                                            update.put("item1", goodsId);
+                                            userGood.child("bidList").updateChildren(update);
                                         } else {
                                             for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                                                 int count = childSnapshot.getValue(Integer.class);
                                                 count++;
                                                 update.put("count", count);
-                                                update.put("item" + count, goodsId);
                                                 userGood.updateChildren(update);
+                                                update.clear();
+                                                update.put("item" + count, goodsId);
+                                                userGood.child("bidList").updateChildren(update);
                                             }
                                         }
                                         Intent intent = new Intent(GoodsPage.this, MainPage.class);
