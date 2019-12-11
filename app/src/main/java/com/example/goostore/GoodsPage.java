@@ -25,6 +25,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,7 +48,7 @@ public class GoodsPage extends AppCompatActivity {
     private EditText mEditTextBidPrice;
 
     private Uri mImageUri;
-    private String GoodsNumber = "";
+    private String GoodsID = "";
     String BidPrice;
 
     private StorageReference mStorageRef;
@@ -62,7 +64,7 @@ public class GoodsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_page);
 
-        GoodsNumber = getIntent().getStringExtra("GoodsNumber");
+        GoodsID = getIntent().getStringExtra("GoodsID");
 
         mButtonMyAuction = findViewById(R.id.myauctionbtn);
         mButtonHome = findViewById(R.id.homebtn);
@@ -78,13 +80,13 @@ public class GoodsPage extends AppCompatActivity {
         mEditTextBidPrice = findViewById(R.id.textBidPrice);
 
 
-        mStorageRef = FirebaseStorage.getInstance().getReference();
+        mStorageRef = FirebaseStorage.getInstance().getReference("Goods");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Goods");
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-        getGoodsDetails(GoodsNumber);
+        getGoodsDetails(GoodsID);
 
         mButtonMyAuction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,9 +124,8 @@ public class GoodsPage extends AppCompatActivity {
 
     }
 
-    private void getGoodsDetails(String goodsNumber) {
-        Toast.makeText(GoodsPage.this, goodsNumber, Toast.LENGTH_LONG).show();
-        mDatabaseRef.child(goodsNumber).addValueEventListener(new ValueEventListener() {
+    private void getGoodsDetails(String goodsID) {
+        mDatabaseRef.child(goodsID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()) {
@@ -132,10 +133,14 @@ public class GoodsPage extends AppCompatActivity {
                     mTextViewGoodsName.setText(goods.getName());
                     mTextViewCurrentPrice.setText(goods.getBasePrice());
                     mTextViewGoodsCategory.setText(goods.getCategory());
-                    mEditTextBidPrice.setText(goods.getBasePrice());
+                    //mEditTextBidPrice.setText(goods.getBasePrice());
                     mTextViewDeadLine.setText(goods.getDeadLine());
                     mTextViewSellerName.setText(goods.getSellerEmail());
                     BidPrice = goods.getBasePrice();
+                    //Seller cannot bid his own item
+                    if (goods.getSellerEmail().equals(firebaseUser.getEmail())) {
+                        return;
+                    }
 
                     Picasso.get().load(goods.getImageUrl()).into(mGoodsImageView);
 
@@ -143,13 +148,44 @@ public class GoodsPage extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             if(firebaseUser != null && Double.parseDouble(mEditTextBidPrice.getText().toString()) > Double.parseDouble(BidPrice)){
-                                mDatabaseRef.child(goodsNumber).child("price").setValue(mEditTextBidPrice.getText().toString());//May Exist Error
+                                Map<String, Object> update = new HashMap<>();
+                                //Set new bid price
+                                mDatabaseRef.child(goodsID).child("basePrice").setValue(mEditTextBidPrice.getText().toString());
+                                update.put("bidWinner", firebaseUser.getEmail());
+                                mDatabaseRef.child(goodsID).updateChildren(update);
                                 mTextViewCurrentPrice.setText(mEditTextBidPrice.getText().toString());//Upload current price
                                 mEditTextBidPrice.setText(mEditTextBidPrice.getText().toString());
-                                mDatabaseRef.child(goodsNumber).child("uerEmail").setValue(firebaseUser.getEmail().trim());
 
+                                update.clear();
+                                String goodsId = goodsID;
+                                DatabaseReference userGood = FirebaseDatabase.getInstance().getReference().child("users").child(firebaseUser.getUid()).child("bidItems");
+                                userGood.orderByKey().equalTo("count").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if (!dataSnapshot.exists()) {
+                                            update.put("count", 1);
+                                            update.put("item1", goodsId);
+                                            userGood.updateChildren(update);
+                                        } else {
+                                            for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                                                int count = childSnapshot.getValue(Integer.class);
+                                                count++;
+                                                update.put("count", count);
+                                                update.put("item" + count, goodsId);
+                                                userGood.updateChildren(update);
+                                            }
+                                        }
+                                        Intent intent = new Intent(GoodsPage.this, MainPage.class);
+                                        startActivity(intent);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
                             } else if(firebaseUser != null && Double.parseDouble(mEditTextBidPrice.getText().toString()) <= Double.parseDouble(BidPrice)) {
-                                Toast.makeText(GoodsPage.this, "Your Price is illegal.Please try again", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(GoodsPage.this, "Your Price is lower than current bid.Please try again", Toast.LENGTH_SHORT).show();
                             } else {
                                 Intent intent = new Intent(GoodsPage.this, Login.class);
                                 startActivity(intent);

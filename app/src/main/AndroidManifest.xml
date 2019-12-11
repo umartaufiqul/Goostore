@@ -24,6 +24,7 @@
         <activity android:name=".Registration" />
         <activity android:name=".Profile" />
         <activity android:name=".Goods_Add_Delete_Page" />
+        <activity android:name=".Goods_item"/>
         <activity
             android:name=".MainPage"
             android:exported="true">

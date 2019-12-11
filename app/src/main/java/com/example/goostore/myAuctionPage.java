@@ -91,6 +91,24 @@ public class myAuctionPage extends AppCompatActivity implements GoodsAdapter.OnI
                 Toast.makeText(myAuctionPage.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        ImageView homebtn = findViewById(R.id.homebtn);
+        homebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(myAuctionPage.this, MainPage.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView profileBtn = findViewById(R.id.profilebtn);
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(myAuctionPage.this, Profile.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {

@@ -126,6 +126,15 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageView auctionBtn = findViewById(R.id.myauctionbtn);
+        auctionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, myAuctionPage.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
