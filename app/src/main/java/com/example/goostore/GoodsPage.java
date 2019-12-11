@@ -133,10 +133,10 @@ public class GoodsPage extends AppCompatActivity {
                     mTextViewGoodsName.setText(goods.getName());
                     mTextViewCurrentPrice.setText(goods.getBasePrice());
                     mTextViewGoodsCategory.setText(goods.getCategory());
-                    //mEditTextBidPrice.setText(goods.getBasePrice());
                     mTextViewDeadLine.setText(goods.getDeadLine());
                     mTextViewSellerName.setText(goods.getSellerEmail());
                     BidPrice = goods.getBasePrice();
+
                     //Seller cannot bid his own item
                     if (goods.getSellerEmail().equals(firebaseUser.getEmail())) {
                         return;

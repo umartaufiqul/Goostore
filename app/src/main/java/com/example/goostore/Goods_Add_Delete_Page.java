@@ -177,7 +177,7 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        mImageView = findViewById(R.id.imageView);
+        mImageView = findViewById(R.id.image_view);
 
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null){
@@ -234,16 +234,20 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     if (!dataSnapshot.exists()) {
                                         update.put("count", 1);
-                                        update.put("good1", goodsId);
                                         userGood.updateChildren(update);
+                                        update.clear();
+                                        update.put("good1", goodsId);
+                                        userGood.child("goodsList").updateChildren(update);
                                     }
                                     else {
                                         for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
                                             int count = childSnapshot.getValue(Integer.class);
                                             count++;
                                             update.put("count", count);
-                                            update.put("good"+Integer.toString(count), goodsId);
                                             userGood.updateChildren(update);
+                                            update.clear();
+                                            update.put("good"+Integer.toString(count), goodsId);
+                                            userGood.child("goodsList").updateChildren(update);
                                         }
                                     }
                                     Intent intent = new Intent(Goods_Add_Delete_Page.this, MainPage.class);

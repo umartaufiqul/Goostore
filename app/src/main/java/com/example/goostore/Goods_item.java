@@ -153,6 +153,17 @@ public class Goods_item extends AppCompatActivity implements GoodsAdapter.OnItem
                 mProgressCircle.setVisibility(View.INVISIBLE);
             }
         });
+
+        ImageView addGoodBtn = findViewById(R.id.addBtn);
+        addGoodBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Goods_item.this, Goods_Add_Delete_Page.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
