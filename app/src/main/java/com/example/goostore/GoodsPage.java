@@ -146,8 +146,6 @@ public class GoodsPage extends AppCompatActivity {
                             .into(mGoodsImageView);
 
 
-                    Picasso.get().load(goods.getImageUrl()).into(mGoodsImageView);
-
                     mButtonBid.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
