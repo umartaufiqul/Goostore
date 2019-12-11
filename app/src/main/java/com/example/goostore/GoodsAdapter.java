@@ -105,7 +105,7 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ImageViewHol
             if (mListener != null) {
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
-                    mListener.onItemClick(position);
+                    mListener.onItemClick(view, position);
                 }
             }
         }
@@ -115,7 +115,7 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ImageViewHol
 
     public interface OnItemClickListener {
 
-        void onItemClick(int position);
+        void onItemClick(View view, int position);
     }
 
 
