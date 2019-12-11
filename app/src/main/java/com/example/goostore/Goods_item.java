@@ -35,6 +35,7 @@ public class Goods_item extends AppCompatActivity implements GoodsAdapter.OnItem
     private ImageView mHomeButton;
     private ImageView mProfileButton;
     private ImageView mMyAuctionButton;
+    private ImageView maddGoodsButton;
     private TextView mCategoryName;
 
     private ProgressBar mProgressCircle;
@@ -100,6 +101,20 @@ public class Goods_item extends AppCompatActivity implements GoodsAdapter.OnItem
             }
         });
 
+        maddGoodsButton = findViewById(R.id.addBtn);
+        maddGoodsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(firebaseUser != null){
+                    Intent intent = new Intent(Goods_item.this, Goods_Add_Delete_Page.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Goods_item.this, Login.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
         //fill the category name
         selectedCategory = getIntent().getStringExtra("Category");
         mCategoryName = findViewById(R.id.categoryName);
@@ -138,8 +153,10 @@ public class Goods_item extends AppCompatActivity implements GoodsAdapter.OnItem
                 mGoods.clear();
                 for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
                     Goods goods = postSnapshot.getValue(Goods.class);
-                    goods.setKey(postSnapshot.getKey());
-                    mGoods.add(goods);
+                    if(goods.getCategory().equals(selectedCategory)) {
+                        goods.setKey(postSnapshot.getKey());
+                        mGoods.add(goods);
+                    }
                 }
 
                 mAdapter.notifyDataSetChanged();

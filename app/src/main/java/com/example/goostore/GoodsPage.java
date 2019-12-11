@@ -133,21 +133,25 @@ public class GoodsPage extends AppCompatActivity {
                     mTextViewGoodsName.setText(goods.getName());
                     mTextViewCurrentPrice.setText(goods.getBasePrice());
                     mTextViewGoodsCategory.setText(goods.getCategory());
+                    //mEditTextBidPrice.setText(goods.getBasePrice());
                     mTextViewDeadLine.setText(goods.getDeadLine());
                     mTextViewSellerName.setText(goods.getSellerEmail());
                     BidPrice = goods.getBasePrice();
 
-                    //Seller cannot bid his own item
-                    if (goods.getSellerEmail().equals(firebaseUser.getEmail())) {
-                        return;
-                    }
+                    Picasso.get()
+                            .load(goods.getImageUrl())
+                            .placeholder(R.mipmap.ic_launcher)
+                            .fit()
+                            .centerCrop()
+                            .into(mGoodsImageView);
+
 
                     Picasso.get().load(goods.getImageUrl()).into(mGoodsImageView);
 
                     mButtonBid.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if(firebaseUser != null && Double.parseDouble(mEditTextBidPrice.getText().toString()) > Double.parseDouble(BidPrice)){
+                            if(firebaseUser != null && Double.parseDouble(mEditTextBidPrice.getText().toString()) > Double.parseDouble(BidPrice) && (!goods.getSellerEmail().equals(firebaseUser.getEmail()))){
                                 Map<String, Object> update = new HashMap<>();
                                 //Set new bid price
                                 mDatabaseRef.child(goodsID).child("basePrice").setValue(mEditTextBidPrice.getText().toString());
@@ -188,8 +192,11 @@ public class GoodsPage extends AppCompatActivity {
 
                                     }
                                 });
-                            } else if(firebaseUser != null && Double.parseDouble(mEditTextBidPrice.getText().toString()) <= Double.parseDouble(BidPrice)) {
+                            } else if(firebaseUser != null && Double.parseDouble(mEditTextBidPrice.getText().toString()) <= Double.parseDouble(BidPrice) && (!goods.getSellerEmail().equals(firebaseUser.getEmail()))) {
                                 Toast.makeText(GoodsPage.this, "Your Price is lower than current bid.Please try again", Toast.LENGTH_SHORT).show();
+                            } else if(firebaseUser != null && goods.getSellerEmail().equals(firebaseUser.getEmail())){
+                                //Seller tries to modify their own goods' price
+                                Toast.makeText(GoodsPage.this, "Illegal Operation", Toast.LENGTH_SHORT).show();
                             } else {
                                 Intent intent = new Intent(GoodsPage.this, Login.class);
                                 startActivity(intent);
