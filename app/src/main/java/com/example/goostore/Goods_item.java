@@ -167,7 +167,7 @@ public class Goods_item extends AppCompatActivity implements GoodsAdapter.OnItem
     }
 
     @Override
-    public void onItemClick(int position){
+    public void onItemClick(View view, int position){
         Goods selectedGoods = mGoods.get(position);
         final String selectedKey = selectedGoods.getKey();
 

@@ -29,11 +29,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class myAuctionPage extends AppCompatActivity implements GoodsAdapter.OnItemClickListener {
 
     ArrayList<Goods> mGoods;
+    ArrayList<Goods> bidItem;
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
@@ -61,15 +63,55 @@ public class myAuctionPage extends AppCompatActivity implements GoodsAdapter.OnI
         });
 
         RecyclerView recyclerView = findViewById(R.id.recycleUser);
+        RecyclerView recyclerBid = findViewById(R.id.recycleBid);
 
+        bidItem = new ArrayList<>();
         mGoods = new ArrayList<>();
+
         GoodsAdapter adapter = new GoodsAdapter(myAuctionPage.this, mGoods);
+        GoodsAdapter bidAdapter = new GoodsAdapter(myAuctionPage.this, bidItem);
 
         recyclerView.setAdapter(adapter);
+        recyclerBid.setAdapter(bidAdapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerBid.setLayoutManager(new LinearLayoutManager(this));
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+
+        //Get the list of bid items
+        DatabaseReference bidList = mDatabaseRef.child("users").child(firebaseUser.getUid()).child("bidItems").child("bidList");
+        bidList.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                bidItem.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String goodsID = snapshot.getValue(String.class);
+                    mDatabaseRef.child("Goods").child(goodsID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            Goods goods = dataSnapshot.getValue(Goods.class);
+                            goods.setKey(goodsID);
+                            bidItem.add(goods);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+
+                bidAdapter.notifyDataSetChanged();
+                TextView bidLoad = findViewById(R.id.bidding_loading);
+                bidLoad.setText("");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         mDatabaseRef.child("Goods").orderByChild("sellerEmail").equalTo(firebaseUser.getEmail()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -137,10 +179,15 @@ public class myAuctionPage extends AppCompatActivity implements GoodsAdapter.OnI
     }
 
     @Override
-    public void onItemClick(int position){
-        Goods selectedGoods = mGoods.get(position);
+    public void onItemClick(View view, int position){
+        Goods selectedGoods;
+        if (view.getParent() == findViewById(R.id.recycleUser)) {
+            selectedGoods = mGoods.get(position);
+        }
+        else {
+            selectedGoods = bidItem.get(position);
+        }
         final String selectedKey = selectedGoods.getKey();
-
         //StorageReference imageRef = mStorage.getReferenceFromUrl(selectedGoods.getImageUrl());
         Intent intent = new Intent(myAuctionPage.this, GoodsPage.class);
         intent.putExtra("GoodsID", selectedKey);
