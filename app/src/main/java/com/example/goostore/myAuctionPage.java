@@ -69,9 +69,9 @@ public class myAuctionPage extends AppCompatActivity implements GoodsAdapter.OnI
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Goods");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
 
-        mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
+        mDatabaseRef.child("Goods").orderByChild("sellerEmail").equalTo(firebaseUser.getEmail()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mGoods.clear();
@@ -143,8 +143,7 @@ public class myAuctionPage extends AppCompatActivity implements GoodsAdapter.OnI
 
         //StorageReference imageRef = mStorage.getReferenceFromUrl(selectedGoods.getImageUrl());
         Intent intent = new Intent(myAuctionPage.this, GoodsPage.class);
-        intent.putExtra("GoodsNumber", selectedKey);
-        //Toast.makeText(myAuctionPage.this, selectedKey, Toast.LENGTH_LONG).show();
+        intent.putExtra("GoodsID", selectedKey);
         startActivity(intent);
     }
 }
