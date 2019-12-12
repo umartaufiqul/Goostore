@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -61,6 +62,11 @@ public class Login extends AppCompatActivity {
 
                 EditText input_password = findViewById(R.id.editText3);
                 String password = input_password.getText().toString();
+
+                if (email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(Login.this, "Please fill both form", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                     @Override
