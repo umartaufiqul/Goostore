@@ -149,6 +149,12 @@ public class GoodsPage extends AppCompatActivity {
                     mButtonBid.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            try {
+                                Double.parseDouble(mEditTextBidPrice.getText().toString());
+                            } catch (NumberFormatException e) {
+                                Toast.makeText(GoodsPage.this, "Enter a bid price in won", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
                             if(firebaseUser != null && Double.parseDouble(mEditTextBidPrice.getText().toString()) > Double.parseDouble(BidPrice) && (!goods.getSellerEmail().equals(firebaseUser.getEmail()))){
                                 Map<String, Object> update = new HashMap<>();
                                 //Set new bid price
