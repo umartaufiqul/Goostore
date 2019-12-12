@@ -294,7 +294,7 @@
         android:id="@+id/info_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="3dp"
         android:fontFamily="@font/mainfont"
         android:text="Parcel service"
         app:layout_constraintEnd_toEndOf="@+id/imageView9"
