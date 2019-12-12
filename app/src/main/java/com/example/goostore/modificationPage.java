@@ -109,6 +109,7 @@ public class modificationPage extends AppCompatActivity {
         }
         if (!password.equals("")) {
             update.put("password", password);
+            updatePassword(password);
         }
         if (!phone.equals("")) {
             update.put("phoneNumber", phone);
@@ -122,7 +123,6 @@ public class modificationPage extends AppCompatActivity {
         if (changeImage == 1) {
             updateProfilePic();
         }
-        updatePassword(password);
         mDB.child("users").child(firebaseUser.getUid()).updateChildren(update).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void Void) {
@@ -221,10 +221,17 @@ public class modificationPage extends AppCompatActivity {
     private void updatePassword(String newPassword) {
         EditText oldPass = findViewById(R.id.editOldPassword);
         String oldpass = oldPass.getText().toString();
+        if (oldpass.isEmpty()) {
+            Toast.makeText(modificationPage.this, "Please insert your old password to authenticate", Toast.LENGTH_LONG).show();
+        }
         AuthCredential credential = EmailAuthProvider.getCredential(firebaseUser.getEmail(), oldpass);
         firebaseUser.reauthenticate(credential).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
+                EditText uPwd = findViewById(R.id.editPassword);
+                if (uPwd.getText().toString().isEmpty()) {
+                    return;
+                }
                 firebaseUser.updatePassword(newPassword).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
