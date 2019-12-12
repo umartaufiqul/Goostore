@@ -160,8 +160,10 @@ public class Goods_Add_Delete_Page extends AppCompatActivity{
                 Integer result = 0;
                 try {
                     result = Integer.parseInt(days);
+                    Integer price = Integer.parseInt(mEditTextBasePrice.getText().toString());
                 } catch (NumberFormatException e) {
-                    Toast.makeText(Goods_Add_Delete_Page.this, "Input for deadline should be number", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Goods_Add_Delete_Page.this, "Input for deadline and price should be number", Toast.LENGTH_LONG).show();
+                    return;
                 }
                 if(result < 2 || result > 7) {
                     Toast.makeText(Goods_Add_Delete_Page.this, "Please enter the deadline again", Toast.LENGTH_SHORT).show();
