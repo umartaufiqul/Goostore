@@ -1,10 +1,10 @@
-#Fri Dec 13 02:17:18 KST 2019
-path.2=classes2.dex
-path.1=classes.dex
+#Wed Jan 08 16:17:35 ICT 2020
+path.2=classes3.dex
+path.1=classes2.dex
 path.0=classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.2=D\:\\GooStore\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes2.dex
-base.1=D\:\\GooStore\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
-base.0=D\:\\GooStore\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
+base.2=C\:\\Users\\Umar Taufiqulhakim\\StudioProjects\\Goostore\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes3.dex
+base.1=C\:\\Users\\Umar Taufiqulhakim\\StudioProjects\\Goostore\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes2.dex
+base.0=C\:\\Users\\Umar Taufiqulhakim\\StudioProjects\\Goostore\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
