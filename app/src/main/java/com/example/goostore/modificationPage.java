@@ -8,21 +8,31 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.api.Distribution;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -51,6 +61,11 @@ public class modificationPage extends AppCompatActivity {
     int changeImage = 0;
 
     ImageView completeButton;
+    LinearLayout deleteButton;
+    FloatingActionButton fab;
+    AlertDialog.Builder dialog;
+    LayoutInflater inflater;
+    View dialogView;
 
     public static final int PICK_IMAGE = 3;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
@@ -80,6 +95,15 @@ public class modificationPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 modify();
+            }
+        });
+
+        deleteButton = findViewById(R.id.delete_button);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(modificationPage.this, "Sukses", Toast.LENGTH_LONG).show();
+                openDialog();
             }
         });
     }
@@ -250,4 +274,26 @@ public class modificationPage extends AppCompatActivity {
             }
         });
     }
+
+    private void openDialog() {
+        final Dialog dialog = new Dialog(modificationPage.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.delete_dialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        LinearLayout confirm_delete = dialog.findViewById(R.id.confirm_delete);
+
+
+        LinearLayout cancel_delete = dialog.findViewById(R.id.cancel_delete);
+        cancel_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+    }
+
 }
+

@@ -620,6 +620,7 @@ bool abc_config_actionMenuItemAllCaps
 bool mtrl_btn_textappearance_all_caps
 color Black
 color Gray
+color LightGray
 color White
 color Yellow
 color Yellow2
@@ -1272,6 +1273,7 @@ id bottom
 id buttonPanel
 id button_choose_image
 id button_upload
+id cancel_delete
 id category
 id categoryName
 id category_image
@@ -1286,6 +1288,7 @@ id clip_horizontal
 id clip_vertical
 id collapseActionView
 id complete_button
+id confirm_delete
 id container
 id content
 id contentPanel
@@ -1629,6 +1632,7 @@ layout activity_payment_page
 layout activity_profile
 layout activity_registration
 layout custom_dialog
+layout delete_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
