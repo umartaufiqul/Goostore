@@ -1289,6 +1289,7 @@ id clip_vertical
 id collapseActionView
 id complete_button
 id confirm_delete
+id confirm_password
 id container
 id content
 id contentPanel

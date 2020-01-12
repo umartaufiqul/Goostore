@@ -284,7 +284,37 @@ public class modificationPage extends AppCompatActivity {
         dialog.show();
 
         LinearLayout confirm_delete = dialog.findViewById(R.id.confirm_delete);
-
+        confirm_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText confirm_password = dialog.findViewById(R.id.confirm_password);
+                String conf_password = confirm_password.getText().toString();
+                if (conf_password.isEmpty()) {
+                    Toast.makeText(modificationPage.this, "Please enter password to confirm account deletion", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                AuthCredential credential = EmailAuthProvider.getCredential(firebaseUser.getEmail(), conf_password);
+                firebaseUser.reauthenticate(credential).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        mDB.child("users/" + firebaseUser.getUid()).removeValue();
+                        firebaseUser.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Intent intent = new Intent(modificationPage.this, Login.class);
+                                startActivity(intent);
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(modificationPage.this, "Wrong password", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                });
+            }
+        });
 
         LinearLayout cancel_delete = dialog.findViewById(R.id.cancel_delete);
         cancel_delete.setOnClickListener(new View.OnClickListener() {

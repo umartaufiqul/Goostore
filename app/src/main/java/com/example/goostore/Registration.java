@@ -103,28 +103,37 @@ public class Registration extends AppCompatActivity {
                                     if (!task.isSuccessful()) {
                                         Toast.makeText(Registration.this, "Authentication failed." + task.getException(),
                                                 Toast.LENGTH_SHORT).show();
-                                    } else {
+                                    }
+                                    else {
                                         user = task.getResult().getUser();
                                         storage = FirebaseStorage.getInstance();
                                         mStorageRef = storage.getReference();
-                                        sample_user.setProfilePic(user.getUid()+"/profile.jpg");
-                                        StorageReference profileRef = mStorageRef.child(user.getUid()+"/profile.jpg");
-                                        UploadTask uploadTask = profileRef.putStream(inputStream);
-                                        uploadTask.addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Toast.makeText(Registration.this, "Image add failed" + e.getMessage(),
-                                                Toast.LENGTH_LONG).show();
-                                            }
-                                        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                            @Override
-                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                                mDB = FirebaseDatabase.getInstance().getReference().child("users");
-                                                mDB.child(user.getUid()).setValue(sample_user);
-                                                startActivity(new Intent(Registration.this, Profile.class));
-                                                finish();
-                                            }
-                                        });
+                                        if (inputStream != null) {
+                                            sample_user.setProfilePic(user.getUid()+"/profile.jpg");
+                                            StorageReference profileRef = mStorageRef.child(user.getUid()+"/profile.jpg");
+                                            UploadTask uploadTask = profileRef.putStream(inputStream);
+                                            uploadTask.addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(Registration.this, "Image add failed" + e.getMessage(),
+                                                            Toast.LENGTH_LONG).show();
+                                                }
+                                            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                @Override
+                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                    mDB = FirebaseDatabase.getInstance().getReference().child("users");
+                                                    mDB.child(user.getUid()).setValue(sample_user);
+                                                    startActivity(new Intent(Registration.this, Profile.class));
+                                                    finish();
+                                                }
+                                            });
+                                        }
+                                        else {
+                                            mDB = FirebaseDatabase.getInstance().getReference().child("users");
+                                            mDB.child(user.getUid()).setValue(sample_user);
+                                            startActivity(new Intent(Registration.this, Profile.class));
+                                            finish();
+                                        }
                                     }
                                 }
                             });

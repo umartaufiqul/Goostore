@@ -27,7 +27,7 @@
         android:fontFamily="@font/mainfont"
         android:textColor="@color/Gray"/>
     <EditText
-        android:id="@+id/editPassword"
+        android:id="@+id/confirm_password"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
