@@ -1315,6 +1315,7 @@ id direct
 id disableHome
 id editAddress
 id editBankAcc
+id editConfirmPass
 id editEmail
 id editImage
 id editName

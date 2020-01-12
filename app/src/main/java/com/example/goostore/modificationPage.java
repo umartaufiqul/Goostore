@@ -247,6 +247,7 @@ public class modificationPage extends AppCompatActivity {
         String oldpass = oldPass.getText().toString();
         if (oldpass.isEmpty()) {
             Toast.makeText(modificationPage.this, "Please insert your old password to authenticate", Toast.LENGTH_LONG).show();
+            return;
         }
         AuthCredential credential = EmailAuthProvider.getCredential(firebaseUser.getEmail(), oldpass);
         firebaseUser.reauthenticate(credential).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -310,7 +311,6 @@ public class modificationPage extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(modificationPage.this, "Wrong password", Toast.LENGTH_LONG).show();
-                        return;
                     }
                 });
             }

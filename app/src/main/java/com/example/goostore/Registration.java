@@ -86,8 +86,18 @@ public class Registration extends AppCompatActivity {
                 String email = input_email.getText().toString();
 
                 EditText input_password = findViewById(R.id.editTextReg2);
+                EditText confirm_password = findViewById(R.id.editConfirmPass);
+                if (input_password.getText() == null || confirm_password.getText() == null) {
+                    Toast.makeText(Registration.this, "Please fill both password and its confirmation", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 String password = input_password.getText().toString();
+                String conf_password = confirm_password.getText().toString();
 
+                if (!password.equals(conf_password)) {
+                    Toast.makeText(Registration.this, "Password does not match", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 boolean registOK = newUser();
                 //Trying google way
